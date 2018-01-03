@@ -1,0 +1,144 @@
+body{
+
+}
+a:hover{
+	text-decoration: none;
+}
+.slider{
+	position: relative;
+	transition: 0.3s all;
+}
+.bg-header{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 999;
+}
+.navbar{
+	margin-bottom: 5px !important;
+}
+.navbar-nav > li > a{
+	color: #ffffff;
+	font-weight: 600;
+	font-size: 14px;
+}
+.navbar-nav > li > a:hover{
+	background-color: #ff2255 !important;
+}
+.txt-search{
+	background: transparent !important;
+	border: 1px solid #ffffff !important;
+	color: #ffffff !important;
+}
+.tagline {
+    padding: 20px 0 20px;
+    font-size: 1.5em;
+    text-align: center;
+    font-size: 22px;
+    color: #888899;
+    font-weight: 600;
+}
+.panel-default{
+	border: none !important;
+	margin-bottom: 0px !important;
+}
+.panel{
+	background-color:rgba(0,0,20,0.05) !important;
+}
+.caption h3{
+	text-align: center;
+	margin-top: 5px !important;
+	margin-bottom: 5px !important;
+	color: #888899;
+	font-size: 18px;
+}
+.caption h3:hover{
+	color: #d9534f;
+	-webkit-transform: scale(1.1,1.1);
+   -moz-transform: scale(1.1,1.1);
+   -o-transform: scale(1.1,1.1);
+   -ms-transform: scale(1.1,1.1);
+   transform: scale(1.1,1.1);
+}
+.caption a:hover{
+	text-decoration: none;
+}
+.post img{
+	-webkit-transition: all 0.2s linear !important;
+	-moz-transition: all 0.2s linear !important;
+	-o-transition: all 0.2s linear !important;
+	-ms-transition: all 0.2s linear !important;
+	transition: all 0.2s linear !important;
+}
+.post img:hover{
+	-webkit-transform: scale(1.1,1.1);
+   -moz-transform: scale(1.1,1.1);
+   -o-transform: scale(1.1,1.1);
+   -ms-transform: scale(1.1,1.1);
+   transform: scale(1.1,1.1);
+}
+.footer{
+	background-color: #444444;
+}
+.copyright{
+	margin: 15px 10px !important;
+	color: #959191;
+	font-size: 15px;
+	font-style: italic;
+}
+#map{
+	height: 300px;
+	width: 100%;
+}
+.block-right .panel-heading, .block-center .panel-heading{
+	background: none repeat scroll 0 0 #dddddd !important;
+	border-bottom: 4px solid #F34B0A;
+}
+.block-right .panel-body, .block-center .panel-body{
+	padding: 0px !important;
+}
+.block-right h3{
+	padding: 0px;
+	margin: 0px;
+	text-align: center;
+	color: #333333;
+	text-transform: uppercase;
+	font-weight: 600;
+	font-size: 14px;
+}
+.breadcrumb{
+	text-transform: uppercase;
+	font-weight: 600;
+	font-size: 13px !important;
+	padding: 0px !important;
+	margin: 0px !important;
+	background-color: transparent !important;
+}
+.title-post{
+	margin: 0px !important;
+}
+/*
+
+*/
+.no-background{
+	background: none !important;
+}
+.no-margin{
+	margin: 0px !important;
+}
+.margin_top45{
+	margin-top: 45px; 
+}
+.d_divide5{
+	margin-top: 5px;
+}
+.d_divide10{
+	margin-top: 10px;
+}
+.padding10{
+	padding: 10px !important;
+}
+.padding15{
+	padding: 10px !important;
+}
