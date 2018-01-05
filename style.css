@@ -4,6 +4,9 @@ body{
 a:hover{
 	text-decoration: none;
 }
+p img{
+	width: 100%;
+}
 .slider{
 	position: relative;
 	transition: 0.3s all;
@@ -107,6 +110,18 @@ a:hover{
 	font-weight: 600;
 	font-size: 14px;
 }
+.block-right .panel-body li{
+	padding: 10px;
+}
+.my_btn {
+    height: 25px;
+    padding: 0 20px;
+    line-height: 25px;
+    border: none;
+    color: #fff;
+    font-size: 13px;
+    cursor: pointer;
+}
 .breadcrumb{
 	text-transform: uppercase;
 	font-weight: 600;
@@ -121,6 +136,9 @@ a:hover{
 /*
 
 */
+.d_asterisk{
+	color: red;
+}
 .no-background{
 	background: none !important;
 }

@@ -172,7 +172,7 @@
 		               		<?php echo $post['like']?>
 		                </td>
 		                <td align="center"> 
-		                	<a href="" class="">
+		                	<a href="post_edit.php?tt=<?php echo  $post['alias']?>">
 		                        <i class="glyphicon glyphicon-edit"></i>
 		                    </a>
 		                </td>

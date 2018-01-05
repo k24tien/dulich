@@ -1,3 +1,4 @@
+<?php include('config/config.php');?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,46 +28,26 @@
 				</div>
 				<div class="collapse navbar-collapse" id="nav-menu">
 					<ul class="nav navbar-nav my-nav">
-	                    <li class="active"><a href="">Trang chu</a></li>
-	                    <li>
-					        <a href="#">Introduction</a>
-					    </li>
+	                    <li class="active"><a href="http://localhost/doan">Trang chủ</a></li>
+	                    <?php 
+                    	$collections = $db->category;
+						$cates = $collections->find();
+						foreach ($cates as $cat) {
+						?>
+						<li><a href="category.php?c=<?php echo $cat['catname'];?>"> <?php echo $cat['catname'];?></a> </li>
+						<?php }?>
 					    <li>
-					        <a href="#">Teachings</a>
-					    </li>
-					    <li>
-					        <a href="#">Testimonials</a>
-					    </li>
-					    <li>
-					        <a href="#">Year Books</a>
-					    </li>
-					    <li>
-					        <a href="#">Karaoke</a>
-					    </li>
-					    <li>
-					        <a href="#">Videos</a>
-					    </li>
-					    <li>
-					        <a href="#">Photos</a>
-					    </li>
-					    <li>
-					        <a href="#">Events</a>
-					    </li>
-					    <li>
-					        <a href="#">Centers List</a>
-					    </li>
-					    <li>
-					        <a href="#">Maps</a>
+					        <a href="#">Bản đồ</a>
 					    </li>
 	                </ul>
 				</div>
 			</div>
 		</nav>
 		<div class="col-md-12 no-margin  box-search">
-			<form id="search-form" class="form-inline" role="search" action="" method="get">
+			<form id="search-form" class="form-inline" role="search" action="search.php" method="post">
 				<div class="form-group search-form margin-right-10 pull-right">
-					<input class="form-control txt-search" type="search" name="s">
-					<button type="button" class="btn btn-danger">Tìm kiếm</button>
+					<input class="form-control txt-search" type="search" name="txtSearch" id="txtSearch">
+					<button type="submit" class="btn btn-danger">Tìm kiếm</button>
 					<!-- <input class="btn-search" type="submit" alt="Search" value="Search" /> -->
 				</div>
 			</form>
@@ -126,86 +107,23 @@
 		<div class="panel panel-default">
 			
 			<div class="panel-body">
+				<?php 
+            	$collections = $db->post;
+				$posts = $collections->find();
+				foreach ($posts as $post) {
+				?>
 				<div class="col-md-3 post">
 					<div class="thumbnail">
-						<a href="">
-						<img src="images/bennk.jpg" alt="ben ninh kieu">
+						<a href="post.php?p=<?php echo $post['alias']?>">
+						<img style="min-height: 210px !important;" src="data:png;base64,<?php echo base64_encode($post['post_image']->bin);?>" alt="ben ninh kieu">
 						</a>
 						<div class="caption">
-							<a href=""><h3>Bến ninh kiều</h3></a>
+							<a href="post.php?p=<?php echo $post['alias']?>"><h3><?php echo $post['title']?></h3></a>
 						</div>
 					</div>
 				</div>
-				<div class="col-md-3 post">
-					<div class="thumbnail">
-						<a href="">
-						<img src="images/bennk.jpg" alt="ben ninh kieu">
-						</a>
-						<div class="caption">
-							<a href=""><h3>Bến ninh kiều</h3></a>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3 post">
-					<div class="thumbnail">
-						<a href="">
-						<img src="images/bennk.jpg" alt="ben ninh kieu">
-						</a>
-						<div class="caption">
-							<a href=""><h3>Bến ninh kiều</h3></a>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3 post">
-					<div class="thumbnail">
-						<a href="">
-						<img src="images/bennk.jpg" alt="ben ninh kieu">
-						</a>
-						<div class="caption">
-							<a href=""><h3>Bến ninh kiều</h3></a>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3 post">
-					<div class="thumbnail">
-						<a href="">
-						<img src="images/bennk.jpg" alt="ben ninh kieu">
-						</a>
-						<div class="caption">
-							<a href=""><h3>Bến ninh kiều</h3></a>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3 post">
-					<div class="thumbnail">
-						<a href="">
-						<img src="images/bennk.jpg" alt="ben ninh kieu">
-						</a>
-						<div class="caption">
-							<a href=""><h3>Bến ninh kiều</h3></a>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3 post">
-					<div class="thumbnail">
-						<a href="">
-						<img src="images/bennk.jpg" alt="ben ninh kieu">
-						</a>
-						<div class="caption">
-							<a href=""><h3>Bến ninh kiều</h3></a>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3 post">
-					<div class="thumbnail">
-						<a href="post.php">
-						<img src="images/bennk.jpg" alt="ben ninh kieu">
-						</a>
-						<div class="caption">
-							<a href=""><h3>Bến ninh kiều</h3></a>
-						</div>
-					</div>
-				</div>
+				<?php }?>
+				
 			</div>
 			
 		</div>

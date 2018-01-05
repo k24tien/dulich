@@ -7,7 +7,7 @@ $arrQuanHuyen = array('An Giang'=>array('Thành phố Long Xuyên','Thành phố
 	'Bạc Liêu'=>'',
 	'Bến Tre'=>array('Thành Phố Bến Tre', 'Huyện Châu Thành'),
 	"Cà Mau"=>'',
-	'Cần Thơ'=>'',
+	'Cần Thơ'=>array('Quận Ninh Kiều','Quận Cái Răng','Quận Bình Thủy','Quận Ô Môn','Quận Thốt Nốt','Huyện Phong Điền','Huyện Thới Lai','Huyện Cờ Đỏ', 'Huyện Vĩnh Thạnh'),
 	'Đồng Tháp'=>'',
 	'Hậu Giang'=>'',
 	'Hồ Chí Mính'=>'',
