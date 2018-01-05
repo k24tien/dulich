@@ -132,7 +132,28 @@ a:hover, a.active, a:focus{
     touch-action: manipulation;
     cursor: pointer;
 }
-
+.btn-add-tag{
+    color: #555;
+    background: #f7f7f7;
+    font-size: 13px;
+    line-height: 26px;
+    height: 28px;
+    padding: 6px 10px;
+    border: 1px solid #ccc;
+}
+.input-tag{
+    height: 34px;
+}
+.tagList > span {
+    font-size: 16px;
+    color: #0073aa;
+}
+.tagList > span > label{
+    margin-left: 5px;
+    font-size: 13px;
+    font-style: normal;
+    color: #6d6d6d;
+}
 /*content*/
 #wrap {
     height: auto;

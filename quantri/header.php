@@ -23,6 +23,7 @@
     <script src="../bootstrap/js/bootstrap.min.js"></script>
     <script src="../bootstrap_alert/sweet-alert.js" type="text/javascript"></script>
     <script src="../js/libraries.js"></script>
+    <script src="../ckeditor/ckeditor.js"></script>
 
     <script type="text/javascript">
     	function openNav() {
@@ -70,6 +71,7 @@
                             <span class="text_menu">Quản lý chủ đề</span>
                         </a>
                     </li>
+
                     <li class="menu-top">
                         <a href="comments.php">
                             <span class="icon"><i class="glyphicon glyphicon-pushpin"></i></span>

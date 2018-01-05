@@ -6,7 +6,6 @@
 	foreach ($cates as $cat) {
 		$countCates++;
 	}
-	var_dump($countCates);
 ?>
 <script type="text/javascript">
 	var n_cb = 0;
@@ -231,7 +230,7 @@
 					<?php $stt = 1;?>
 					<?php foreach($cates as $cate){?>
 					<tr>
-						<td class="text-center">1</td>
+						<td class="text-center"><?php echo $stt; ?></td>
 						<td>
 		                    <input id="cb<?php echo $stt; ?>" name="cb[]" value="<?php echo $cate['catname']?>" onclick="isChecked(this.checked);" type="checkbox">
 		                </td>
