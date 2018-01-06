@@ -1,3 +1,26 @@
+<?php include('config/config.php');
+$post = null;
+$la = 0;
+$ln = 0;
+
+if(isset($_GET["p"])){
+	$p = $_GET["p"];
+	$collections = $db->post;
+	$posts = $collections->find(array('alias'=>$p));
+	foreach ($posts as $key => $value) {
+		$post = $value;
+	}
+}
+if($post!=null && $post['urlmap']!=""){
+	$url = strstr($post['urlmap'],'@');
+	$la = substr($url, 1,strpos($url, ',' )-1);
+	$url1 = str_replace('@'.$la.',' , "", $url);
+	$ln = substr($url1, 0,strpos($url1, ',' )-1);
+}
+?>
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,46 +55,26 @@
 				</div>
 				<div class="collapse navbar-collapse" id="nav-menu">
 					<ul class="nav navbar-nav my-nav">
-	                    <li class="active"><a href="">Trang chu</a></li>
-	                    <li>
-					        <a href="#">Introduction</a>
-					    </li>
+	                    <li class="active"><a href="index.php">Trang chủ</a></li>
+	                    <?php 
+                    	$collections = $db->category;
+						$cates = $collections->find();
+						foreach ($cates as $cat) {
+						?>
+						<li><a href="category.php?c=<?php echo $cat['catname'];?>"> <?php echo $cat['catname'];?></a> </li>
+						<?php }?>
 					    <li>
-					        <a href="#">Teachings</a>
-					    </li>
-					    <li>
-					        <a href="#">Testimonials</a>
-					    </li>
-					    <li>
-					        <a href="#">Year Books</a>
-					    </li>
-					    <li>
-					        <a href="#">Karaoke</a>
-					    </li>
-					    <li>
-					        <a href="#">Videos</a>
-					    </li>
-					    <li>
-					        <a href="#">Photos</a>
-					    </li>
-					    <li>
-					        <a href="#">Events</a>
-					    </li>
-					    <li>
-					        <a href="#">Centers List</a>
-					    </li>
-					    <li>
-					        <a href="#">Maps</a>
+					        <a href="#">Bản đồ</a>
 					    </li>
 	                </ul>
 				</div>
 			</div>
 		</nav>
 		<div class="col-md-12 no-margin  box-search">
-			<form id="search-form" class="form-inline" role="search" action="" method="get">
+			<form id="search-form" class="form-inline" role="search" action="search.php" method="post">
 				<div class="form-group search-form margin-right-10 pull-right">
-					<input class="form-control txt-search" type="search" name="s">
-					<button type="button" class="btn btn-danger">Tìm kiếm</button>
+					<input class="form-control txt-search" type="search" name="txtSearch" id="txtSearch">
+					<button type="submit" class="btn btn-danger">Tìm kiếm</button>
 					<!-- <input class="btn-search" type="submit" alt="Search" value="Search" /> -->
 				</div>
 			</form>
@@ -128,13 +131,67 @@
 			<div class="panel panel-default no-background">
 				<div class="block-center">
 					<div class="panel-heading">
-						<p class="breadcrumb">category >> ten bai viet</p>
+						<p class="breadcrumb"><?php echo '<a href="category.php?c='.$post['category'].'">'. $post['category'].'</a>'?> >> <?php echo $post['title']?></p>
 					</div>
 					<div class="panel-body">
 						<div class="row no-margin">
 							<div class="col-md-12  padding15">
-								<h3 class="title-post">title bai viet</h3>
-								<p>noi dung bai viet</p>
+								<h3 class="title-post"><?php echo $post['title']?></h3>
+								<p style="width: 100% ! important;"><?php echo $post['content']?></p>
+							</div>
+							<div class="col-md-12  padding15">
+								<button class="my_btn" type="button" id="btnAccount" onclick="shoFormLogin()" style="background-color: #1b95e0;font-size: 15px; padding: 0px 10px; margin-bottom: 5px;">
+                                        <i class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></i>
+                                        <span style="font-size: 12px;">Thích <?php if($post['like']>0) echo $post['like'];?></span>
+                                    </button>
+							</div>
+							<div class="col-md-12  padding15 comment" style="background: #f7f7f7;border-radius: 2px;">
+								<form class="form-horizontal" name="phpForm" action="" id="phpForm">
+									<div class="form-group col-md-12 col-sm-12">
+						                <label for="txtA_Title" class="col-sm-2 control-label">
+						                    Tên
+						                    <span class="d_asterisk">*</span>                                
+						                </label>
+						                <div class="col-sm-10">
+						                    <input type="text" class="form-control" title="" id="txtA_Title" name="txtA_Title" placeholder="Tên">
+						                </div>
+						            </div>
+						            <div class="form-group col-md-12 col-sm-12">
+						                <label for="txtA_Title" class="col-sm-2 control-label">
+						                    Email
+						                    <span class="d_asterisk">*</span>                                
+						                </label>
+						                <div class="col-sm-10">
+						                    <input type="text" class="form-control" title="" id="txtA_Title" name="txtA_Title" placeholder="Email">
+						                </div>
+						            </div>
+						            <div class="form-group col-md-12 col-sm-12">
+						                <label for="txtA_Title" class="col-sm-2 control-label">
+						                    Điện thoại
+						                    <span class="d_asterisk">*</span>                                
+						                </label>
+						                <div class="col-sm-10">
+						                    <input type="text" class="form-control" title="" id="txtA_Title" name="txtA_Title" placeholder="Điện thoại">
+						                </div>
+						            </div>
+						            <div class="form-group col-md-12 col-sm-12">
+						                <label for="txtA_Title" class="col-sm-2 control-label">
+						                    Nội dung
+						                    <span class="d_asterisk">*</span>                                
+						                </label>
+						                <div class="col-sm-10">
+						                    <textarea id="comment-input" class="comment-input animated" placeholder="Ý kiến của bạn?" style=""></textarea>
+						                </div>
+						            </div>
+						             <div class="form-group col-md-12 col-sm-12">
+							            <div class="col-sm-12 text-right">
+							            	<a class="btn btn-primary" style="color: #fff;border: none!important;"  href="">
+									            <i class="glyphicon glyphicon-circle-arrow-right"></i>
+									            Gửi bình luận
+									        </a>
+							            </div>
+						        	</div>
+								</form>
 							</div>
 						</div>
 					</div>
@@ -161,8 +218,13 @@
 						</div>
 						<div class="panel-body padding10">
 							<ul>
-								<li>bai 1</li>
-								<li>bai 2</li>
+								<?php 
+								$collections = $db->post;
+								$p_xemnhieu = $collections->find()->sort(array('view'=>1))->limit(5);
+								foreach ($p_xemnhieu as $p) {
+								?>
+								<li><a href="post.php?p=<?php echo $p['alias'];?>"><?php echo $p['title'];?></a></li>
+								<?php }?>
 							</ul>
 						</div>
 					</div>
@@ -177,8 +239,12 @@
 	</footer>
 </div>
 <script>
+
       function initMap() {
-        var uluru = {lat: 10.039047, lng: 105.752264};
+      	
+
+      	
+        var uluru = {lat: <?php echo $la; ?>, lng: <?php echo $ln; ?>};
         var map = new google.maps.Map(document.getElementById('map'), {
           zoom: 16,
           center: uluru
@@ -186,7 +252,7 @@
         var marker = new google.maps.Marker({
           position: uluru,
           map: map,
-          url:'https://www.google.com/maps/place/Allmed+Can+Tho/@10.039814,105.747644,17z/data=!4m13!1m7!3m6!1s0x31a0886ed14f790d:0xd7b97b7f60bb0628!2zVW5uYW1lZCBSb2FkLCBBbiBLaMOhbmgsIE5pbmggS2nhu4F1LCBD4bqnbiBUaMah!3b1!8m2!3d10.039814!4d105.7498327!3m4!1s0x31a0886bc4312731:0x880c1d488ade154e!8m2!3d10.0391951!4d105.7499964?hl=vi'
+          url:'<?php echo $post['urlmap'];?>'
         });
         var infowindow = new google.maps.InfoWindow({
 		    content: "Some text"
@@ -202,3 +268,4 @@
     </script>
 </body>
 </html>
+<!-- https://www.google.com/maps/place/Allmed+Can+Tho/@10.039814,105.747644,17z/data=!4m13!1m7!3m6!1s0x31a0886ed14f790d:0xd7b97b7f60bb0628!2zVW5uYW1lZCBSb2FkLCBBbiBLaMOhbmgsIE5pbmggS2nhu4F1LCBD4bqnbiBUaMah!3b1!8m2!3d10.039814!4d105.7498327!3m4!1s0x31a0886bc4312731:0x880c1d488ade154e!8m2!3d10.0391951!4d105.7499964?hl=vi -->

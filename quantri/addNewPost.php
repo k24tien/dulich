@@ -30,10 +30,11 @@
             });
         });
     });
-    function addPost(redirectPage){
-        var txtA_Title = $('txtA_Title');
-        var txtA_Alias = $('txtA_Alias');
-        var file = $('#txtA_Image')[0].files[0];
+    /*function addPost(redirectPage){
+        var img;
+        var txtA_Title = $('#txtA_Title');
+        var txtA_Alias = $('#txtA_Alias');
+        var file = $('#file');
         var slA_Category = $('#slA_Category');
         var txtA_Urlmap = $("#txtA_Urlmap");
         var txtA_Address = $('#txtA_Address');
@@ -41,15 +42,78 @@
         var slA_Huyen = $('#slA_Huyen');
         var txtA_Des = $('#txtA_Des');
         var txtA_Content = CKEDITOR.instances['txtA_Content'].getData();
-        var hasError = validateEmptyValue(new Array(txtA_Title,txtA_Alias,slA_Category));
+        var file_data = $('#file').prop("files")[0];
         var reader = new FileReader();
-        var data = reader.readAsArrayBuffer(file);
-        alert(data);
+        reader.readAsText(file_data);
+        // reader.onload=function(){reader.result}
+        alert(file_data);
+        var hasError = validateEmptyValue(new Array(txtA_Title, txtA_Alias, slA_Category));
         if(!hasError){
+           // var dataForm = new FormData();
+            //dataForm.append('file', file_data);
 
+            // dataForm.append('hdTitle', txtA_Title.val());
+            // dataForm.append('hdAlias', txtA_Alias.val());
+            // dataForm.append('hdCategory', slA_Category.val());
+            // dataForm.append('hdUrlmap', txtA_Urlmap.val());
+            // dataForm.append('hdAddress', txtA_Address.val());
+            // dataForm.append('hdTinh', slA_Tinh.val());
+            // dataForm.append('hdHuyen', slA_Huyen.val());
+            // dataForm.append('hdDes', txtA_Des.val());
+            // dataForm.append('hdContent', txtA_Content);
+            var data = {
+                hdTitle: txtA_Title.val(),
+                hdAlias: txtA_Alias.val(),
+                hdFile: file.val(),
+                hdCategory:  slA_Category.val(),
+                hdUrlmap: txtA_Urlmap.val(),
+                hdAddress:txtA_Address.val(),
+                hdTinh: slA_Tinh.val(),
+                hdHuyen: slA_Huyen.val(),
+                hdDes: txtA_Des.val(),
+                hdContent: txtA_Content
+            };
+            $.ajax({
+                url:'addnewpost_xuly_them.php',
+                type:'POST',
+                data:data,
+                success:function(data){
+                    console.log(data);
+                    if ($.trim(data) == 'OK') {
+                        swal({
+                            title: "Thao tác thành công!",
+                        });
+                        // if(redirectPage){
+                        //     window.location.reload();
+                        // }else{
+                        //     window.location.reload();
+                        // }
+                    } else {
+                        swal("Lỗi", data, "error");
+                    }
+                },
+                error: function (data) {
+                    console.log(data);
+                }
+            });
         }
-    }
+    }*/
+    function checkError(){
+        var txtA_Title = $('#txtA_Title');
+        var txtA_Alias = $('#txtA_Alias');
+        var slA_Category = $('#slA_Category');
+        var tagList = JSON.stringify(arrayTags);
+        $('#pTag').val(tagList);
+        var hasError = validateEmptyValue(new Array(txtA_Title, txtA_Alias, slA_Category));
+        if(hasError){
+            swal("Lỗi", "Vui long nhap day du thong tin", "error");
+            return false;
+        }
 
+    }
+    function setRedirect(){
+        $('#redirectPage').val(1);
+    }
     function assignTitleToAlias(){
         var title = $.trim($("#txtA_Title").val());
         title = removeSigns(title);
@@ -81,6 +145,7 @@
 </script>
 <div class="d_divide20"></div>
 <div class="d_divide20"></div>
+<form class="form-horizontal" name="phpForm" method="POST" action="" id="phpForm" enctype="multipart/form-data" onsubmit="return checkError()">
 <div class="row" style="margin: 0px;">
 	<div class="col-sm-6">      
         <div class="icon_40 icon_category pull-left" style="margin-right: 10px"></div>  
@@ -89,14 +154,15 @@
         </h4>     
     </div>
     <div class="col-sm-6 text-right">
-        <a class="my-btn-primary" style="color: #fff" href="#" onclick="addPost(true)">
+        <button class="my-btn-primary" style="color: #fff;border: none!important;" type="submit" onclick="setRedirect();">
             <i class="glyphicon glyphicon-floppy-open"></i>
+            <input type="hidden" name="redirectPage" value="0" id="redirectPage">
             Lưu và thoát
-        </a>
-        <a class="my-btn-primary" style="color: #fff" href="#" onclick="addPost()">
+        </button>
+        <button class="my-btn-primary no-border" style="color: #fff; border: none!important;" type="submit" onclick="checkError();">
             <i class="glyphicon glyphicon-floppy-open"></i>
             Lưu
-        </a>
+        </button>
         <a href="post.php" class="my-btn-danger" style="color: #fff">
             <i class="glyphicon glyphicon-arrow-left"></i>
             Trở về
@@ -106,7 +172,7 @@
 <div class="d_divide20"></div>
 <div class="row" style="margin: 0px;">  
     <div class="col-sm-12" style="padding: 0px;">
-        <form class="form-horizontal" name="phpForm" id="phpForm">
+        
             <div class="form-group col-md-12 col-sm-12">
                 <label for="txtA_Title" class="col-sm-2 control-label">
                     Tên
@@ -129,7 +195,7 @@
                     Ảnh                           
                 </label>
                 <div class="col-sm-10">
-                    <input type="file" id="txtA_Image" name="txtA_Image" >
+                    <input type="file" id="file" name="file" >
                 </div>
             </div>
             <div class="form-group col-md-12 col-sm-12">
@@ -198,6 +264,7 @@
                         <div class="tagList" id="tagList">
                             
                         </div>
+                        <input type="hidden" name="pTag" id="pTag" value="">
                     </div>
                 </div>
             </div>
@@ -217,7 +284,49 @@
                     <textarea class="form-control ckeditor" id="txtA_Content" name="txtA_Content"></textarea> 
                 </div>
             </div>
-        </form>
+        
     </div>
 </div>
+</form>
 <?php include("footer.php");?>
+<?php 
+    if(isset($_POST['txtA_Title'])){
+    $redirectPage = $_POST['redirectPage'];
+    $title = $_POST['txtA_Title'];
+    $alias = $_POST['txtA_Alias'];
+    $filename = $_FILES["file"]["tmp_name"];
+    $category = $_POST['slA_Category'];
+    $urlmap = $_POST['txtA_Urlmap'];
+    $address = $_POST['txtA_Address'];
+    $tinh = $_POST['slA_Tinh'];
+    $huyen = $_POST['slA_Huyen'];
+    $des = $_POST['txtA_Des'];
+    $content = $_POST['txtA_Content'];
+    $tagList = json_decode($_POST['pTag']);
+    $collection = $db->post;
+    $doc = array( "title" => $title, "alias"=>$alias,"post_image" => new MongoBinData(file_get_contents($filename)),"category" => $category, "urlmap" => $urlmap,"address" => $address, "tinh" => $tinh,"huyen" => $huyen, "des" => $des, "content" => $content, "tags"=>$tagList, "view" => 0,"like"=>0,"comment"=>array(), "created_date" => new MongoDate(), "author" => "Administrator");
+    $collection->insert($doc);
+    if($redirectPage==1){
+        echo "<script>
+        swal({
+            title: 'Thao tác thành công!',
+            timer: 10000,
+            type: 'success'
+        });
+        window.location.replace('http://localhost/dulich/quantri/post.php');
+        </script>";  
+    }else{
+        echo "<script>
+        swal({
+            title: 'Thao tác thành công!',
+            timer: 10000,
+            type: 'success'
+        });
+        window.location.replace('http://localhost/dulich/quantri/addNewPost.php');
+        </script>";  
+    }
+     
+    }else{
+        echo "Lỗi";
+    }
+?>
