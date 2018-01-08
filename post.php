@@ -55,7 +55,11 @@ if($post!=null && $post['urlmap']!=""){
 				</div>
 				<div class="collapse navbar-collapse" id="nav-menu">
 					<ul class="nav navbar-nav my-nav">
+<<<<<<< HEAD
 	                    <<li class="active"><a href="http://localhost/doan">Trang chủ</a></li>
+=======
+	                    <li class="active"><a href="index.php">Trang chủ</a></li>
+>>>>>>> 0e64ca66cbfa1f16960ee5b45c9aff13a73577a0
 	                    <?php 
                     	$collections = $db->category;
 						$cates = $collections->find();
@@ -162,7 +166,11 @@ if($post!=null && $post['urlmap']!=""){
 						                    <span class="d_asterisk">*</span>                                
 						                </label>
 						                <div class="col-sm-10">
+<<<<<<< HEAD
 						                    <input type="text" class="form-control" title="" id="txtA_Title" name="txtA_Title" placeholder="Tên">
+=======
+						                    <input type="text" class="form-control" title="" id="txtA_Title" name="txtA_Title" placeholder="Email">
+>>>>>>> 0e64ca66cbfa1f16960ee5b45c9aff13a73577a0
 						                </div>
 						            </div>
 						            <div class="form-group col-md-12 col-sm-12">
@@ -171,7 +179,11 @@ if($post!=null && $post['urlmap']!=""){
 						                    <span class="d_asterisk">*</span>                                
 						                </label>
 						                <div class="col-sm-10">
+<<<<<<< HEAD
 						                    <input type="text" class="form-control" title="" id="txtA_Title" name="txtA_Title" placeholder="Tên">
+=======
+						                    <input type="text" class="form-control" title="" id="txtA_Title" name="txtA_Title" placeholder="Điện thoại">
+>>>>>>> 0e64ca66cbfa1f16960ee5b45c9aff13a73577a0
 						                </div>
 						            </div>
 						            <div class="form-group col-md-12 col-sm-12">
@@ -252,7 +264,11 @@ if($post!=null && $post['urlmap']!=""){
         var marker = new google.maps.Marker({
           position: uluru,
           map: map,
+<<<<<<< HEAD
           url:'<?php echo $post['urlmap']?>'
+=======
+          url:'<?php echo $post['urlmap'];?>'
+>>>>>>> 0e64ca66cbfa1f16960ee5b45c9aff13a73577a0
         });
         var infowindow = new google.maps.InfoWindow({
 		    content: "Some text"
