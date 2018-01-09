@@ -11,7 +11,7 @@
 
 	<script type="text/javascript" src="js/jquery.min.js"></script>
 	<script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
-	<link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" rel="stylesheet" media="all">
+	
 </head>
 <body>
 <div id="wrapper">
