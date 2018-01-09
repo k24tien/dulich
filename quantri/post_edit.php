@@ -283,7 +283,7 @@ if(isset($_GET['tt'])){
                 timer: 10000,
                 type: 'success'
             });
-            window.location.replace('http://localhost/doan/quantri/post.php');
+            window.location.replace('http://localhost/dulich/quantri/post.php');
             </script>";  
         }else{
             echo "<script>
@@ -292,7 +292,7 @@ if(isset($_GET['tt'])){
                 timer: 10000,
                 type: 'success'
             });
-            window.location.replace('http://localhost/doan/quantri/addNewPost.php');
+            window.location.replace('http://localhost/dulich/quantri/addNewPost.php');
             </script>";  
         }
     }

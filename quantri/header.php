@@ -18,10 +18,11 @@
     <link rel="stylesheet" href="backend.css" type="text/css">
     <link rel="stylesheet" href="../css/admin_menu.css" type="text/css">
     <link rel="stylesheet" href="../css/admin_bar.css" type="text/css">
-
+    <link rel="stylesheet" href="../css/summernote.css" type="text/css">
     <script src="../js/jquery.min.js"></script>
     <script src="../bootstrap/js/bootstrap.min.js"></script>
     <script src="../bootstrap_alert/sweet-alert.js" type="text/javascript"></script>
+    <script src="../js/summernote.js"></script>
     <script src="../js/libraries.js"></script>
     <script src="../ckeditor/ckeditor.js"></script>
 

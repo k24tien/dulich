@@ -28,7 +28,7 @@
 				</div>
 				<div class="collapse navbar-collapse" id="nav-menu">
 					<ul class="nav navbar-nav my-nav">
-	                    <li class="active"><a href="http://localhost/doan">Trang chủ</a></li>
+	                    <li class="active"><a href="index.php">Trang chủ</a></li>
 	                    <?php 
                     	$collections = $db->category;
 						$cates = $collections->find();
@@ -37,7 +37,7 @@
 						<li><a href="category.php?c=<?php echo $cat['catname'];?>"> <?php echo $cat['catname'];?></a> </li>
 						<?php }?>
 					    <li>
-					        <a href="#">Bản đồ</a>
+					        <a href="quantri/">Đăng nhập</a>
 					    </li>
 	                </ul>
 				</div>
@@ -100,7 +100,7 @@
     </section>
     <div class="row no-margin">
     	<div class="container">
-    		<h2 class="tagline">Những thông tin du lịch nổi bậc</h2>
+    		<h2 class="tagline">Những thông tin du lịch nổi bật</h2>
     	</div>
     </div>
 	<section class="row no-margin content">
@@ -114,11 +114,11 @@
 				?>
 				<div class="col-md-3 post">
 					<div class="thumbnail">
-						<a href="post.php?p=<?php echo $post['alias']?>">
+						<a href="post.php?id=<?php echo $post['_id']?>">
 						<img style="min-height: 210px !important;" src="data:png;base64,<?php echo base64_encode($post['post_image']->bin);?>" alt="ben ninh kieu">
 						</a>
 						<div class="caption">
-							<a href="post.php?p=<?php echo $post['alias']?>"><h3><?php echo $post['title']?></h3></a>
+							<a href="post.php?id=<?php echo $post['_id']?>"><h3><?php echo $post['title']?></h3></a>
 						</div>
 					</div>
 				</div>

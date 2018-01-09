@@ -3,10 +3,12 @@ $post = null;
 $la = 0;
 $ln = 0;
 
-if(isset($_GET["p"])){
-	$p = $_GET["p"];
+if(isset($_GET["id"])){
+	$id = $_GET["id"];
 	$collections = $db->post;
-	$posts = $collections->find(array('alias'=>$p));
+
+	$query = array('_id' => new MongoId($id));
+	$posts = $collections->find($query);
 	foreach ($posts as $key => $value) {
 		$post = $value;
 	}
@@ -33,7 +35,8 @@ if($post!=null && $post['urlmap']!=""){
 
 	<script type="text/javascript" src="js/jquery.min.js"></script>
 	<script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
-	<link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" rel="stylesheet" media="all">
+	<script src="js/libraries.js"></script>
+	<link href="css/animate.min.css" rel="stylesheet" media="all">
 	<style type="text/css">
 		/*.bs-slider{
 			max-height: 300px;
@@ -55,7 +58,7 @@ if($post!=null && $post['urlmap']!=""){
 				</div>
 				<div class="collapse navbar-collapse" id="nav-menu">
 					<ul class="nav navbar-nav my-nav">
-	                    <<li class="active"><a href="http://localhost/doan">Trang chủ</a></li>
+	                    <li class="active"><a href="index.php">Trang chủ</a></li>
 	                    <?php 
                     	$collections = $db->category;
 						$cates = $collections->find();
@@ -145,54 +148,10 @@ if($post!=null && $post['urlmap']!=""){
                                         <span style="font-size: 12px;">Thích <?php if($post['like']>0) echo $post['like'];?></span>
                                     </button>
 							</div>
-							<div class="col-md-12  padding15 comment" style="background: #f7f7f7;border-radius: 2px;">
-								<form class="form-horizontal" name="phpForm" action="" id="phpForm">
-									<div class="form-group col-md-12 col-sm-12">
-						                <label for="txtA_Title" class="col-sm-2 control-label">
-						                    Tên
-						                    <span class="d_asterisk">*</span>                                
-						                </label>
-						                <div class="col-sm-10">
-						                    <input type="text" class="form-control" title="" id="txtA_Title" name="txtA_Title" placeholder="Tên">
-						                </div>
-						            </div>
-						            <div class="form-group col-md-12 col-sm-12">
-						                <label for="txtA_Title" class="col-sm-2 control-label">
-						                    Email
-						                    <span class="d_asterisk">*</span>                                
-						                </label>
-						                <div class="col-sm-10">
-						                    <input type="text" class="form-control" title="" id="txtA_Title" name="txtA_Title" placeholder="Tên">
-						                </div>
-						            </div>
-						            <div class="form-group col-md-12 col-sm-12">
-						                <label for="txtA_Title" class="col-sm-2 control-label">
-						                    Điện thoại
-						                    <span class="d_asterisk">*</span>                                
-						                </label>
-						                <div class="col-sm-10">
-						                    <input type="text" class="form-control" title="" id="txtA_Title" name="txtA_Title" placeholder="Tên">
-						                </div>
-						            </div>
-						            <div class="form-group col-md-12 col-sm-12">
-						                <label for="txtA_Title" class="col-sm-2 control-label">
-						                    Nội dung
-						                    <span class="d_asterisk">*</span>                                
-						                </label>
-						                <div class="col-sm-10">
-						                    <textarea id="comment-input" class="comment-input animated" placeholder="Ý kiến của bạn?" style=""></textarea>
-						                </div>
-						            </div>
-						             <div class="form-group col-md-12 col-sm-12">
-							            <div class="col-sm-12 text-right">
-							            	<a class="btn btn-primary" style="color: #fff;border: none!important;"  href="">
-									            <i class="glyphicon glyphicon-circle-arrow-right"></i>
-									            Gửi bình luận
-									        </a>
-							            </div>
-						        	</div>
-								</form>
-							</div>
+							
+
+							<?php include 'comment.php'; ?>
+
 						</div>
 					</div>
 				</div>
@@ -252,7 +211,7 @@ if($post!=null && $post['urlmap']!=""){
         var marker = new google.maps.Marker({
           position: uluru,
           map: map,
-          url:'<?php echo $post['urlmap']?>'
+          url:'<?php echo $post['urlmap'];?>'
         });
         var infowindow = new google.maps.InfoWindow({
 		    content: "Some text"
