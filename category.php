@@ -38,11 +38,7 @@
 				</div>
 				<div class="collapse navbar-collapse" id="nav-menu">
 					<ul class="nav navbar-nav my-nav">
-<<<<<<< HEAD
-	                    <li class="active"><a href="http://localhost/doan">Trang chủ</a></li>
-=======
 	                    <li class="active"><a href="index.php">Trang chủ</a></li>
->>>>>>> 0e64ca66cbfa1f16960ee5b45c9aff13a73577a0
 	                    <?php 
                     	$collections = $db->category;
 						$cates = $collections->find();
@@ -51,11 +47,7 @@
 						<li><a href="category.php?c=<?php echo $cat['catname'];?>"> <?php echo $cat['catname'];?></a> </li>
 						<?php }?>
 					    <li>
-<<<<<<< HEAD
-					        <a href="#">Bản đồ</a>
-=======
 					        <a href="quantri/">Đăng nhập</a>
->>>>>>> 0e64ca66cbfa1f16960ee5b45c9aff13a73577a0
 					    </li>
 	                </ul>
 				</div>

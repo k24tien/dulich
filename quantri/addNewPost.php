@@ -304,7 +304,7 @@
     $content = $_POST['txtA_Content'];
     $tagList = json_decode($_POST['pTag']);
     $collection = $db->post;
-    $doc = array( "title" => $title, "alias"=>$alias,"post_image" => new MongoBinData(file_get_contents($filename)),"category" => $category, "urlmap" => $urlmap,"address" => $address, "tinh" => $tinh,"huyen" => $huyen, "des" => $des, "content" => $content, "tags"=>$tagList, "view" => 0,"like"=>0,"comment"=>array(), "created_date" => new MongoDate(), "author" => "Administrator");
+    $doc = array( "title" => $title, "alias"=>$alias,"post_image" => new MongoBinData(file_get_contents($filename)),"category" => $category, "urlmap" => $urlmap,"address" => $address, "tinh" => $tinh,"huyen" => $huyen, "des" => $des, "content" => $content, "tags"=>$tagList, "view" => 0,"like"=>0,"created_date" => new MongoDate(), "author" => "Administrator");
     $collection->insert($doc);
     if($redirectPage==1){
         echo "<script>
@@ -313,11 +313,7 @@
             timer: 10000,
             type: 'success'
         });
-<<<<<<< HEAD
-        window.location.replace('http://localhost/doan/quantri/post.php');
-=======
         window.location.replace('http://localhost/dulich/quantri/post.php');
->>>>>>> 0e64ca66cbfa1f16960ee5b45c9aff13a73577a0
         </script>";  
     }else{
         echo "<script>
@@ -326,11 +322,7 @@
             timer: 10000,
             type: 'success'
         });
-<<<<<<< HEAD
-        window.location.replace('http://localhost/doan/quantri/addNewPost.php');
-=======
         window.location.replace('http://localhost/dulich/quantri/addNewPost.php');
->>>>>>> 0e64ca66cbfa1f16960ee5b45c9aff13a73577a0
         </script>";  
     }
      
