@@ -6,11 +6,9 @@ if(isset($_POST['cm_Title'])&&isset($_POST['cm_Email'])&&isset($_POST['cm_Conten
 	$cm_email = $_POST['cm_Email'];
 	$cm_content = $_POST['cm_Content'];
 	$cm_id = new MongoId();
-	//$rs = "Nhóm bài viết đã tồn tại!";
 	$collections = $db->post;
 
 	$query1 = array('_id' => new MongoId($post_Id));
-	//$query2 = array('$push' => array("comments" =>array("comment_id" => $cm_id, "comment_name" => $cm_title, "comment_email" => $cm_email, "comment_content" => $cm_content, "comment_date" => new MongoDate(), "duyet" => "0")));
 
 
 	$result = $collections->update(
