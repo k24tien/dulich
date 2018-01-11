@@ -134,12 +134,22 @@ if($post!=null && $post['urlmap']!=""){
 			<div class="panel panel-default no-background">
 				<div class="block-center">
 					<div class="panel-heading">
-						<p class="breadcrumb"><?php echo '<a href="category.php?c='.$post['category'].'">'. $post['category'].'</a>'?> >> <?php echo $post['title']?></p>
+						<p class="breadcrumb"><?php echo '<a href="category.php?c='.$post['category'].'">'. $post['category'].'</a>'?> / <?php echo $post['title']?></p>
 					</div>
 					<div class="panel-body">
 						<div class="row no-margin">
 							<div class="col-md-12  padding15">
 								<h3 class="title-post"><?php echo $post['title']?></h3>
+								<div class="top-article">
+									<span><i class="glyphicon glyphicon-calendar"></i><a href="#"> 1/1/2017</a></span>
+									<span><i class="glyphicon glyphicon-user"></i><a href="#">Administrator </a></span>
+									<span><i class="glyphicon glyphicon-folder-open"></i><a href="#">Chuyen muc 1</a></span>
+									<span><i class="glyphicon glyphicon-comment"></i><a href="#">0 Bình luận</a></span>
+							</div>
+
+							<p style="width: 100% ! important;">
+
+
 								<p style="width: 100% ! important;"><?php echo $post['content']?></p>
 							</div>
 							<div class="col-md-12  padding15">

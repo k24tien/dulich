@@ -245,7 +245,7 @@ if(isset($_GET['tt'])){
                     Nội dung                         
                 </label>
                 <div class="col-sm-10">
-                    <textarea class="form-control ckeditor" id="txtA_Content" name="txtA_Content"><?php echo $post['content']?></textarea> 
+                    <textarea class="form-control summernote" id="txtA_Content" name="txtA_Content"><?php echo $post['content']?></textarea> 
                 </div>
             </div>
         

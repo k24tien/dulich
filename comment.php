@@ -66,9 +66,12 @@
 								                    console.log(data);
 								                    
 								                    if ($.trim(data) == 'OK') {
+								                    	$('#message').empty();
 								                        $('#message').append("<div class='alert alert-success' >Gửi bình luận thành công! <strong>Xin lưu ý: </strong>Chúng tôi sẽ xét duyệt bình luận trước khi đăng!</div>");
+								                        
 								                    } else {
-								                        $('#message').append("<div class='alert alert-danger' >Gửi bình luận thành công! <strong>Xin lưu ý: </strong>Chúng tôi sẽ xét duyệt bình luận trước khi đăng!</div>");
+								                        $('#message').append("<div class='alert alert-danger' >Có lỗi xảy ra! <strong>Vui lòng thử lại </strong></div>");
+								                        window.location.reload();
 								                    } 
 
 								                },

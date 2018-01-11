@@ -25,6 +25,7 @@ if(isset($_POST['cm_Title'])&&isset($_POST['cm_Email'])&&isset($_POST['cm_Conten
 			)
 	);
 	if($result){
+		//echo $query1;
 		echo "OK";
 	}
 	else

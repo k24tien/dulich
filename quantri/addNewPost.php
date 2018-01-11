@@ -281,7 +281,10 @@
                     Nội dung                         
                 </label>
                 <div class="col-sm-10">
-                    <textarea class="form-control ckeditor" id="txtA_Content" name="txtA_Content"></textarea> 
+                    <textarea class="form-control summernote" rows="5" id="txtA_Content" name="txtA_Content"></textarea> 
+                    <script>
+                                    var content = $('.summernote').summernote('code');
+                    </script>
                 </div>
             </div>
         

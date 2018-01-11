@@ -24,7 +24,7 @@
     <script src="../bootstrap_alert/sweet-alert.js" type="text/javascript"></script>
     <script src="../js/summernote.js"></script>
     <script src="../js/libraries.js"></script>
-    <script src="../ckeditor/ckeditor.js"></script>
+    <!--<script src="../ckeditor/ckeditor.js"></script>-->
 
     <script type="text/javascript">
     	function openNav() {

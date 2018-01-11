@@ -95,8 +95,10 @@ p img{
 	width: 100%;
 }
 .block-right .panel-heading, .block-center .panel-heading{
-	background: none repeat scroll 0 0 #dddddd !important;
-	border-bottom: 4px solid #F34B0A;
+	margin-top: 10px;
+	background: none !important;
+	border-bottom: 1px solid #F34B0A;
+	padding: 10px 0px;
 }
 .block-right .panel-body, .block-center .panel-body{
 	padding: 0px !important;
@@ -123,9 +125,9 @@ p img{
     cursor: pointer;
 }
 .breadcrumb{
-	text-transform: uppercase;
-	font-weight: 600;
-	font-size: 13px !important;
+	font-weight: normal;
+	font-style: italic;
+	font-size: 16px !important;
 	padding: 0px !important;
 	margin: 0px !important;
 	background-color: transparent !important;

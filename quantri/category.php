@@ -147,6 +147,7 @@
 	}
 	function saveEdit(){
 		var title = $('#txtE_Title');
+		
 		var des = $('#txtE_Description').val();
 		var id = $('#txtE_Title1');
 		var hasError = validateEmptyValue(new Array(title));
