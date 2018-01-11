@@ -126,7 +126,7 @@ html:lang(he-il) .rtl #adminbar *  {
 }
 
 #adminbar .quicklinks .ab-top-secondary > li {
-	float: right;
+	/*float: right;*/
 }
 
 #adminbar .quicklinks a,
