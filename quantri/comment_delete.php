@@ -16,7 +16,7 @@ if(isset($_POST['hdArrayID'])){
 		$result = $collections->update(
 			array("_id" => new MongoId($post_id)),
 			array('$pull' => 
-				array('comments.array'=> 
+				array('comments'=> 
 					array('comment_id' => new MongoId($cm_id))
 					)
 				)

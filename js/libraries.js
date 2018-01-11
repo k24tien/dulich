@@ -1,8 +1,3 @@
-$(document).ready(function() {
-   $('.summernote').summernote({
-     height: 300,
-   });
-});
 // check empty value
 function validateEmptyValue(arrayInput) {
     var hasError = false;

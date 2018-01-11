@@ -222,7 +222,7 @@
 						foreach ($cursor as $document1) {
 							$i = 0;
                                 	if($document1["comments"]!=""){
-                                		$comments1 = $document1["comments"]["array"];
+                                		$comments1 = $document1["comments"];
                                 		foreach ($comments1 as $comment1) {
                                 			$i= $i + 1;
                                 		}
@@ -260,7 +260,7 @@
 					<?php 
 						foreach ($cursor as $document) {
                                 	if($document["comments"]!=""){
-                                		$comments = $document["comments"]["array"];
+                                		$comments = $document["comments"];
                                 		foreach ($comments as $comment) {
                                 			$stt = $stt + 1;
                                 		
@@ -298,7 +298,7 @@
 		               			?>
 		                </td>
 		                <td align="center"> 
-		                	<a href="#" style="color: #c12e2a;" onclick="deleteComment('<?php echo $comment["comment_id"];?>')">
+		                	<a href="#" style="color: #c12e2a;" onclick="deleteComment('<?php echo $comment["comment_id"].'-'.$document["_id"];?>')">
 		                        <i class="glyphicon glyphicon-trash"></i>
 		                    </a>
 		                </td>

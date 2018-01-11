@@ -1,8 +1,8 @@
 <?php include('config/config.php');
-if (isset($_POST['txtSearch'])) {
+/*if (isset($_POST['txtSearch'])) {
 	$txt_search =  $_POST['txtSearch'];
 	var_dump($txt_search);
-}
+}*/
 ?>
 <!DOCTYPE html>
 <html>
@@ -16,7 +16,6 @@ if (isset($_POST['txtSearch'])) {
 
 	<script type="text/javascript" src="js/jquery.min.js"></script>
 	<script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
-	<link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" rel="stylesheet" media="all">
 </head>
 <body>
 <div id="wrapper">
@@ -35,12 +34,12 @@ if (isset($_POST['txtSearch'])) {
 					<ul class="nav navbar-nav my-nav">
 	                    <li class="active"><a href="http://localhost/doan">Trang chủ</a></li>
 	                    <?php 
-                    	$collections = $db->category;
+                    	/*$collections = $db->category;
 						$cates = $collections->find();
-						foreach ($cates as $cat) {
+						foreach ($cates as $cat) {*/
 						?>
-						<li><a href="category.php?c=<?php echo $cat['catname'];?>"> <?php echo $cat['catname'];?></a> </li>
-						<?php }?>
+						<li><a href="category.php?c=<?php echo $cat['catname'];?>"> <?php //echo $cat['catname'];?></a> </li>
+						<?php //}?>
 					    <li>
 					        <a href="#">Bản đồ</a>
 					    </li>
@@ -105,6 +104,59 @@ if (isset($_POST['txtSearch'])) {
     </section>
     <div class="row no-margin">
     	<div class="container">
+    		<div class="row" style="margin: 0px;">  
+    			 <div class="col-sm-12" style="padding: 0px;">
+    		<form>
+    			
+   
+        
+            <div class="form-group col-md-12 col-sm-12">
+                <label for="txtA_Title" class="col-sm-2 control-label">
+                    Tên
+                    <span class="d_asterisk">*</span>                                
+                </label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" title="" id="txtA_Title" name="txtA_Title" placeholder="Tên">
+                </div>
+            </div>
+            <div class="form-group col-md-12 col-sm-12">
+                <label for="txtA_Alias" class="col-sm-2 control-label">
+                    Định danh                           
+                </label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" title="" id="txtA_Alias" name="txtA_Alias" placeholder="Định danh">
+                </div>
+            </div>
+            <div class="form-group col-md-12 col-sm-12">
+                <label for="txtA_Image" class="col-sm-2 control-label">
+                    Ảnh                           
+                </label>
+                <div class="col-sm-10">
+                    <input type="file" id="file" name="file" >
+                </div>
+            </div>
+            <div class="form-group col-md-12 col-sm-12">
+                <label for="slA_Category" class="col-sm-2 control-label">
+                    Nhóm bài viết                         
+                </label>
+                <div class="col-sm-10">
+                    <select  class="form-control" name="slA_Category" id="slA_Category">
+                        <option value="">-- Chọn Chủ đề --</option>
+                        <?php foreach($cates as $cate){?>
+                        <option value="<?php echo $cate['catname'];?>"><?php echo $cate['catname'];?></option>
+                        <?php }?>
+                    </select>
+                </div>
+            </div>
+            
+
+    		</form>
+    		</div>
+        </div>
+    	</div>
+    </div>
+    <div class="row no-margin">
+    	<div class="container">
     		<h2 class="tagline">Kết quả tìm kiếm</h2>
     	</div>
     </div>
@@ -113,21 +165,21 @@ if (isset($_POST['txtSearch'])) {
 			
 			<div class="panel-body">
 				<?php 
-            	$collections = $db->post;
-				$posts = $collections->find(array('title'=> '/.*'.$txt_search'.*/'));
-				foreach ($posts as $post) {
+            	//$collections = $db->post;
+				//$posts = $collections->find(array('title'=> '/.*'.$txt_search'.*/'));
+				//foreach ($posts as $post) {
 				?>
 				<div class="col-md-3 post">
 					<div class="thumbnail">
-						<a href="post.php?p=<?php echo $post['alias']?>">
-						<img style="min-height: 210px !important;" src="data:png;base64,<?php echo base64_encode($post['post_image']->bin);?>" alt="ben ninh kieu">
+						<a href="post.php?p=<?php //echo $post['alias']?>">
+						<img style="min-height: 210px !important;" src="data:png;base64,<?php //echo base64_encode($post['post_image']->bin);?>" alt="ben ninh kieu">
 						</a>
 						<div class="caption">
-							<a href="post.php?p=<?php echo $post['alias']?>"><h3><?php echo $post['title']?></h3></a>
+							<a href="post.php?p=<?php //cho $post['alias']?>"><h3><?php //echo $post['title']?></h3></a>
 						</div>
 					</div>
 				</div>
-				<?php }?>
+				<?php //}?>
 				
 			</div>
 			

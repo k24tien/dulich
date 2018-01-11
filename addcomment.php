@@ -12,7 +12,7 @@ if(isset($_POST['cm_Title'])&&isset($_POST['cm_Email'])&&isset($_POST['cm_Conten
 
 
 	$result = $collections->update(
-		$query1,array('$push' => array('comments.array'=>
+		$query1,array('$addToSet' => array('comments'=>
 			array (
 			      "comment_id" => $cm_id, 
 			      "comment_name" => $cm_title, 

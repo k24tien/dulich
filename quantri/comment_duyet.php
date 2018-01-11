@@ -6,7 +6,7 @@ if(isset($_POST['hdArrayID'])){
 	
 	$collections = $db->post;
 
-	$duyet = "1";
+	$res = 0;
 
 	foreach($ids as $id){
 		$arr = explode("-", $id, 2);
@@ -15,15 +15,15 @@ if(isset($_POST['hdArrayID'])){
 		
 
 		$result = $collections->update(
-			array("_id" => new MongoId($post_id),'comments.array'=> array('comment_id' => new MongoId($cm_id))),
-			array('comments.array.duyet' => $duyet)	
+			array('_id'=> new MongoId($post_id),"comments.comment_id"=> new MongoId($cm_id)),
+			array('$set' => array("comments.$.duyet" => "1"))
 		);
-		if($result)
-			echo $cm_id;
-			echo "<br />";
-			echo $post_id;
-			echo "OK";
-
+		if($result){
+			$res = 1;
+		}
+	}
+	if($res == 1){
+		echo "OK";
 	} 
 	
 }else{
