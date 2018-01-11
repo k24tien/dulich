@@ -158,7 +158,17 @@ if($post!=null && $post['urlmap']!=""){
                                         <span style="font-size: 12px;">Thích <?php if($post['like']>0) echo $post['like'];?></span>
                                     </button>
 							</div>
-							
+							<div class="bottom-article">
+									<span><i class="glyphicon glyphicon-tags"></i> Từ khóa: 
+										<?php
+										$tags = $post['tags']; 
+										foreach($tags as $tag){
+											echo "<a href='tag.php?tag=".$tag."'>".$tag." , "."</a>";
+										}
+
+										?>
+									</span>
+							</div>
 
 							<?php include 'comment.php'; ?>
 
