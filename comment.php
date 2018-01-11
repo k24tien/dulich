@@ -24,35 +24,35 @@
 	<h4>Gửi ý kiến bình luận</h4>
 	<form class="form-horizontal" name="phpForm" action="" id="phpForm">
 		<div class="form-group col-md-12 col-sm-12">
-            <label for="txtA_Title" class="col-sm-12">
+            <label for="txtA_Title">
                 Tên
                 <span class="d_asterisk">*</span>                                
             </label>
-            <div class="col-sm-12">
+            <div>
                 <input type="text" class="form-control" title="" id="txtA_Title" name="txtA_Title" placeholder="Tên">
             </div>
         </div>
         <div class="form-group col-md-12 col-sm-12">
-            <label for="txtA_Title" class="col-sm-12">
+            <label for="txtA_Title">
                 Email
                 <span class="d_asterisk">*</span>                                
             </label>
-            <div class="col-sm-12">
+            <div>
                 <input type="text" class="form-control" title="" id="txtA_Email" name="txtA_Title" placeholder="Email">
             </div>
         </div>
         <div class="form-group col-md-12 col-sm-12">
-            <label for="txtA_Title" class="col-sm-12">
+            <label for="txtA_Title">
                 Nội dung
                 <span class="d_asterisk">*</span>                                
             </label>
-            <div class="col-sm-12">
+            <div>
                 <textarea id="txtA_Content" class="comment-input animated" placeholder="Ý kiến của bạn?" style="width:100%;" rows="5"></textarea>
             </div>
         </div>
         <input type="hidden" class="form-control" id="txtA_postid" name="txtA_postId" value="<?php echo $_GET["id"]; ?>">
          <div class="form-group col-md-12 col-sm-12">
-            <div class="col-sm-12 text-left">
+            <div class="text-left">
             	<button type="button" class="btn btn-primary" onclick="save();">Gửi bình luận</button>
             </div>
     	</div>

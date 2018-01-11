@@ -4,8 +4,8 @@ include("../config/config.php");
 if(isset($_POST['hdArrayID'])){
 	$ids = $_POST['hdArrayID'];
 	foreach($ids as $id){
-		$cat = array('title' => $id);
-		$db->post->remove($cat);
+		$query = array('_id' => new MongoId($id));
+		$db->post->remove($query);
 	}
 	echo "OK";
 }else{

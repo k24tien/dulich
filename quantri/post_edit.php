@@ -1,10 +1,10 @@
 <?php include("header.php");?>
 <?php
 $post = null;
-if(isset($_GET['tt'])){
-    $alias = $_GET['tt'];
+if(isset($_GET['id'])){
+    $id = $_GET['id'];
     $collection = $db->post;
-    $posts = $collection->find(array('alias'=>$alias));
+    $posts = $collection->find(array('_id'=>new MongoId($id)));
     foreach ($posts as $key => $value) {
         $post = $value;
     }
@@ -46,7 +46,7 @@ if(isset($_GET['tt'])){
         $('#pTag').val(tagList);
         var hasError = validateEmptyValue(new Array(txtA_Title, txtA_Alias, slA_Category));
         if(hasError){
-            swal("Lỗi", "Vui long nhap day du thong tin", "error");
+            swal("Lỗi", "Vui lòng nhập đầy đủ thông tin", "error");
             return false;
         }
 
@@ -75,7 +75,6 @@ if(isset($_GET['tt'])){
     }
     function addTags(){
         var nameTag = $("#txtA_Tag").val();
-        alert(tags);
         if($.inArray(nameTag, arrayTags) == -1){
             arrayTags.push(nameTag);
             var key =  $('<div style="margin-left:5px; margin-bottom:5px" class="pull-left btn btn-xs btn-warning" id="' + nameTag + '">' + nameTag + '<i style="cursor: pointer;margin-left:5px" onclick="removeTag(this);" class="glyphicon glyphicon-remove-circle"></i></div>');
@@ -138,6 +137,13 @@ if(isset($_GET['tt'])){
                 </label>
                 <div class="col-sm-10">
                     <input type="file" id="file" name="file" >
+                </div>
+            </div> 
+            <div class="form-group col-md-12 col-sm-12">   
+                <label for="txtA_Image" class="col-sm-2 control-label">                           
+                </label>
+                <div class="col-sm-10">
+                    <img style="max-width: 200px !important;" src="data:png;base64,<?php echo base64_encode($post['post_image']->bin);?> " >
                 </div>
             </div>
             <div class="form-group col-md-12 col-sm-12">
@@ -240,6 +246,7 @@ if(isset($_GET['tt'])){
                     <textarea class="form-control" id="txtA_Des" name="txtA_Des"><?php echo $post['des']?></textarea> 
                 </div>
             </div>
+            <input type="hidden" name="txtA_Id" value="<?php echo $post['_id'];?>">
             <div class="form-group col-md-12 col-sm-12">
                 <label for="txtA_Content" class="col-sm-2 control-label">
                     Nội dung                         
@@ -258,7 +265,7 @@ if(isset($_GET['tt'])){
 <?php include("footer.php");?>
 <?php 
     if(isset($_POST['txtA_Title'])){
-        $id = $_POST['txtE_Title1'];
+        $p_id = $_POST['txtA_Id'];
         $redirectPage = $_POST['redirectPage'];
         $title = $_POST['txtA_Title'];
         $alias = $_POST['txtA_Alias'];
@@ -273,12 +280,12 @@ if(isset($_GET['tt'])){
         $tagList = json_decode($_POST['pTag']);
         $collection = $db->post;
         if($filename!=""){
-            $doc = array( "title" => $title, "alias"=>$alias,"post_image" => new MongoBinData(file_get_contents($filename)),"category" => $category, "urlmap" => $urlmap,"address" => $address, "tinh" => $tinh,"huyen" => $huyen, "des" => $des, "content" => $content, "tags"=>$tagList, "view" => 0,"like"=>0,"comment"=>array(), "created_date" => new MongoDate(), "author" => "Administrator");
+            $arr = array('$set' => array( "title" => $title, "alias"=>$alias,"post_image" => new MongoBinData(file_get_contents($filename)),"category" => $category, "urlmap" => $urlmap,"address" => $address, "tinh" => $tinh,"huyen" => $huyen, "des" => $des, "content" => $content, "tags"=>$tagList, "created_date" => new MongoDate()));
         }else{
-            $doc = array( "title" => $title, "alias"=>$alias,"category" => $category, "urlmap" => $urlmap,"address" => $address, "tinh" => $tinh,"huyen" => $huyen, "des" => $des, "content" => $content, "tags"=>$tagList, "view" => 0,"like"=>0,"comment"=>array(), "created_date" => new MongoDate(), "author" => "Administrator");
+            $arr = array('$set' => array( "title" => $title, "alias"=>$alias,"category" => $category, "urlmap" => $urlmap,"address" => $address, "tinh" => $tinh,"huyen" => $huyen, "des" => $des, "content" => $content, "tags"=>$tagList, "created_date" => new MongoDate()));
         }
         
-        $collection->update(array("title" => $id),$doc);
+        $collection->update(array("_id" => new MongoId($p_id)),$arr);
         if($redirectPage==1){
             echo "<script>
             swal({
@@ -286,7 +293,7 @@ if(isset($_GET['tt'])){
                 timer: 10000,
                 type: 'success'
             });
-            window.location.replace('http://localhost/dulich/quantri/post.php');
+            window.location.replace('post.php');
             </script>";  
         }else{
             echo "<script>
@@ -295,7 +302,7 @@ if(isset($_GET['tt'])){
                 timer: 10000,
                 type: 'success'
             });
-            window.location.replace('http://localhost/dulich/quantri/addNewPost.php');
+            window.location.replace('addNewPost.php');
             </script>";  
         }
     }

@@ -132,15 +132,12 @@
 		                <th width="15%">
 		                    Chủ đề
 		                </th>
-		                <th width="12%">
+		                <th width="20%">
 		                    Mô tả
 		                </th>  
-		                <th width="6%">
+		                <th width="10%">
 		                    Lượt xem
-		                </th>  
-		                <th width="5%">
-		                    Lượt like
-		                </th>  
+		                </th>   
 		                <th align="center" width="3%">Sửa</th>
 		                <th align="center" width="3%">Xoá</th>
 					</tr>
@@ -151,7 +148,7 @@
 					<tr>
 						<td class="text-center"><?php echo $stt; ?></td>
 						<td>
-		                    <input id="cb<?php echo $stt;?>" name="cb[]" value="<?php echo $post['title']; ?>" onclick="isChecked(this.checked);" type="checkbox">
+		                    <input id="cb<?php echo $stt;?>" name="cb[]" value="<?php echo $post['_id']; ?>" onclick="isChecked(this.checked);" type="checkbox">
 		                </td>
 		                <td>
 		                    <img src="data:png;base64,<?php echo base64_encode($post['post_image']->bin);?>" style="width: 30px; height: 30px" title="Ảnh sai đường dẫn"/>
@@ -168,16 +165,13 @@
 		                <td>
 		                	<?php echo $post['view']?>
 		                </td>
-		                <td>
-		               		<?php echo $post['like']?>
-		                </td>
 		                <td align="center"> 
-		                	<a href="post_edit.php?tt=<?php echo  $post['alias']?>">
+		                	<a href="post_edit.php?id=<?php echo  $post['_id']?>">
 		                        <i class="glyphicon glyphicon-edit"></i>
 		                    </a>
 		                </td>
 		                <td align="center"> 
-		                	<a href="#" style="color: #c12e2a;" onclick="deletePost('<?php echo $post['title'];?>')">
+		                	<a href="#" style="color: #c12e2a;" onclick="deletePost('<?php echo $post['_id'];?>')">
 		                        <i class="glyphicon glyphicon-trash"></i>
 		                    </a>
 		                </td>
