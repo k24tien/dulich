@@ -66,6 +66,14 @@ if($post!=null && $post['urlmap']!=""){
 								</ul>
 							</div>
 
+							<div>
+							<div class="alert alert-success">
+								Địa chỉ: <?php echo $post['address']." - ".$post["huyen"]." - ".$post["tinh"]; ?>
+							</div>	
+
+
+							</div>
+
 							<p style="width: 100% ! important;"><strong><?php echo $post['des'];?></strong></p>
 							<div class="pimage">
 								<img style="min-height: 210px !important;" src="data:png;base64,<?php echo base64_encode($post['post_image']->bin);?> " >
@@ -109,7 +117,7 @@ if($post!=null && $post['urlmap']!=""){
 			<div class="panel panel-default no-background">
 					<div class="block-right">
 						<div class="panel-heading">
-							<h3>Bản đồ</h3>
+							<h3 class="widget-heading">Bản đồ</h3>
 						</div>
 						<div class="panel-body">
 						   <div id="map">
@@ -118,22 +126,73 @@ if($post!=null && $post['urlmap']!=""){
 					</div>
 				</div>
 				<div class="d_divide10"></div>
+
+
+
+
+
 				<div class="panel panel-default">
 					<div class="block-right">
-						<div class="panel-heading">
-							<h3>Xem nhiều</h3>
-						</div>
-						<div class="panel-body padding10">
-							<ul>
+							<!--<ul>
 								<?php 
-								$collections = $db->post;
-								$p_xemnhieu = $collections->find()->sort(array('view'=>1))->limit(5);
-								foreach ($p_xemnhieu as $p) {
+								//$collections = $db->post;
+								//$p_xemnhieu = $collections->find()->sort(array('view'=>'-1'))->limit(5);
+								//foreach ($p_xemnhieu as $p) {
 								?>
-								<li><a href="post.php?p=<?php echo $p['alias'];?>"><?php echo $p['title'];?></a></li>
-								<?php }?>
-							</ul>
-						</div>
+								<li><a href="post.php?p=<?php //echo $p['alias'];?>"><?php //echo $p['title'];?></a></li>
+								<?php //}?>
+							</ul>-->
+						
+
+
+
+					
+						<ul class="nav nav-tabs">
+							<li class="active"><a href="#one" data-toggle="tab"><i class="icon-briefcase"></i> Cùng chuyên mục</a></li>
+							<li><a href="#two" data-toggle="tab">Được xem nhiều</a></li>
+						</ul>
+						<div class="tab-content">
+							<div class="tab-pane active" id="one">
+								<ul class="post">
+									<?php 
+									$collections1 = $db->post;
+
+									$query1 = $collections1->find(array('_id'=>array('$ne'=>new MongoId($post['_id'])), 'category'=>$post['category']))->limit(5);
+									foreach ($query1 as $q) { ?>
+									<li>
+										<img class="pull-left" alt="" style="width: 65px !important; height: 65px !important;" src="data:png;base64,<?php echo base64_encode($q['post_image']->bin);?> " width="65px" height="65px">
+										<h6><a href="#"><?php echo $q["title"]; ?></a></h6>
+										<p>
+											<?php echo substr($q['des'],0,strpos($q['des'],' ',50))."..."; ?>
+										</p>
+									</li>
+
+
+									<?php } ?>
+									
+								</ul>
+							</div>
+							<div class="tab-pane" id="two">
+								<ul class="post">
+									<?php 
+									$collections2 = $db->post;
+
+									$query2 = $collections2->find()->limit(5);
+									foreach ($query2 as $q) { ?>
+									<li>
+										<img class="pull-left" alt="" style="width: 65px !important; height: 65px !important;" src="data:png;base64,<?php echo base64_encode($q['post_image']->bin);?> " width="65px" height="65px">
+										<h6><a href="#"><?php echo $q["title"]; ?></a></h6>
+										<p>
+											<?php echo substr($q['des'],0,strpos($q['des'],' ',50))."..."; ?>
+										</p>
+									</li>
+
+
+									<?php } ?>
+									
+								</ul>
+							</div>
+					</div>
 					</div>
 				</div>
 				<div class="d_divide10"></div>
