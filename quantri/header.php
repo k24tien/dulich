@@ -1,4 +1,13 @@
+<?php
+session_start();
+
+
+if(!isset($_SESSION["username"])){
+    header('Location: login.php');
+}
+?>
 <?php include("../config/config.php");?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -103,23 +112,18 @@
                     </ul>
                     <ul id="admin-bar-top-secondary" class="ab-top-secondary ab-top-menu">
                         <li id="admin-bar-my-account" class="menupop with-avatar">
-                            <a class="ab-item" href="">
+                            <a class="ab-item" href="#">
                                 <span class="display-name"><?php echo $_SESSION["username"];?></span>
                                 <img class="avatar" src="../images/icons/acount.png">
                             </a>
-                            <div class="ab-sub-wrapper">
-                                <ul id="admin-bar-user-actions" class="ab-submenu">
-                                    <li id="admin-bar-user-info">
-                                        <a href="#" class="ab-item">
-                                            <img class="avatar" src="../images/icons/acount.png" width="32" height="32">
-                                        </a>
-                                    </li>
-                                    <li id="admin-bar-logout">
-                                        <a href="">Đăng xuất</a>
-                                    </li>
-                                </ul>
-                            </div>
                         </li>
+                        <li id="admin-bar-my-account" class="menupop with-avatar">
+                            <a class="ab-item" href="logout.php">
+                                <span class="display-name">Thoát</span>
+                                
+                            </a>
+                        </li>
+
                     </ul>
                 </div>
             </div>

@@ -6,6 +6,7 @@
 	foreach ($cates as $cat) {
 		$countCates++;
 	}
+
 ?>
 <script type="text/javascript">
 	var n_cb = 0;

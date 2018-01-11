@@ -1,9 +1,4 @@
-<?php
-session_start();
+<?php 
+include("admin.php");
 
-if(isset($_SESSION["username"])){
-	include("admin.php");
-}else{
-	include("login.php");
-}
 ?>
