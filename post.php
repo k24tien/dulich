@@ -8,10 +8,16 @@ if(isset($_GET["id"])){
 	$collections = $db->post;
 
 	$query = array('_id' => new MongoId($id));
-	$posts = $collections->find($query);
-	foreach ($posts as $key => $value) {
+	$post = $collections->findOne($query);
+	$view = $post['view']+1;
+	$collections->update(
+		array("_id" => new MongoId($post['_id'])),
+		array('$set' => array("view" => $view))
+
+	);
+	/*foreach ($posts as $key => $value) {
 		$post = $value;
-	}
+	}*/
 }
 if($post!=null && $post['urlmap']!=""){
 	$url = strstr($post['urlmap'],'@');
@@ -151,7 +157,6 @@ if($post!=null && $post['urlmap']!=""){
 
 
 								<p style="width: 100% ! important;"><?php echo $post['content']; ?></p>
-								<p><?php echo $post['urlmap']; ?></p>
 							</div>
 							<div class="col-md-12  padding15">
 								<button class="my_btn" type="button" id="btnAccount" onclick="shoFormLogin()" style="background-color: #1b95e0;font-size: 15px; padding: 0px 10px; margin-bottom: 5px;">
@@ -162,9 +167,14 @@ if($post!=null && $post['urlmap']!=""){
 							<div class="bottom-article">
 									<span><i class="glyphicon glyphicon-tags"></i> Từ khóa: 
 										<?php
-										$tags = $post['tags']; 
+										$tags = $post['tags'];
+										$count = count($tags);
+										$i = 1; 
 										foreach($tags as $tag){
-											echo "<a href='tag.php?tag=".$tag."'>".$tag." , "."</a>";
+											echo "<a href='tag.php?tag=".$tag."'>".$tag. "</a>";
+											if($i < $count)
+												echo " , ";
+											$i++;
 										}
 
 										?>

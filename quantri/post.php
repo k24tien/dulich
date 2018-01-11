@@ -157,7 +157,7 @@
 		                    <img src="data:png;base64,<?php echo base64_encode($post['post_image']->bin);?>" style="width: 30px; height: 30px" title="Ảnh sai đường dẫn"/>
 		                </td>
 		                <td style="color: #337ab7;">
-		                	<a href="<?php echo "../post.php?id=".$post['_id']; ?>"><?php echo $post['title']?></a>
+		                	<a href="<?php echo "../post.php?id=".$post['_id']; ?>" target="_blank"><?php echo $post['title']?></a>
 		                </td>
 		                <td>
 		                	<?php echo $post['category']?>
