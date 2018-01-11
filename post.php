@@ -150,7 +150,21 @@ if($post!=null && $post['urlmap']!=""){
 									<span><i class="glyphicon glyphicon-calendar"></i><a href="#"> 1/1/2017</a></span>
 									<span><i class="glyphicon glyphicon-user"></i><a href="#">Administrator </a></span>
 									<span><i class="glyphicon glyphicon-folder-open"></i><a href="#">Chuyen muc 1</a></span>
-									<span><i class="glyphicon glyphicon-comment"></i><a href="#">0 Bình luận</a></span>
+									<span><i class="glyphicon glyphicon-comment"></i><a href="#">
+										<?php
+											$count = 0;
+											if($post['comments']!=""){
+												foreach($post['comments'] as $cm){
+													if($cm['duyet']==1)
+														$count = $count + 1;
+												}
+											}
+											echo $count." bình luận";
+
+										?>
+
+
+									</a></span>
 							</div>
 
 							<p style="width: 100% ! important;">
@@ -159,10 +173,10 @@ if($post!=null && $post['urlmap']!=""){
 								<p style="width: 100% ! important;"><?php echo $post['content']; ?></p>
 							</div>
 							<div class="col-md-12  padding15">
-								<button class="my_btn" type="button" id="btnAccount" onclick="shoFormLogin()" style="background-color: #1b95e0;font-size: 15px; padding: 0px 10px; margin-bottom: 5px;">
+								<!--<button class="my_btn" type="button" id="btnAccount" onclick="shoFormLogin()" style="background-color: #1b95e0;font-size: 15px; padding: 0px 10px; margin-bottom: 5px;">
                                         <i class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></i>
-                                        <span style="font-size: 12px;">Thích <?php if($post['like']>0) echo $post['like'];?></span>
-                                    </button>
+                                        <span style="font-size: 12px;">Thích <?php //if($post['like']>0) echo $post['like'];?></span>
+                                    </button>-->
 							</div>
 							<div class="bottom-article">
 									<span><i class="glyphicon glyphicon-tags"></i> Từ khóa: 

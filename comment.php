@@ -1,39 +1,62 @@
 <div class="col-md-12  padding15 comment" style="background: #f7f7f7;border-radius: 2px;">
-								<form class="form-horizontal" name="phpForm" action="" id="phpForm">
-									<div class="form-group col-md-12 col-sm-12">
-						                <label for="txtA_Title" class="col-sm-2 control-label">
-						                    Tên
-						                    <span class="d_asterisk">*</span>                                
-						                </label>
-						                <div class="col-sm-10">
-						                    <input type="text" class="form-control" title="" id="txtA_Title" name="txtA_Title" placeholder="Tên">
-						                </div>
-						            </div>
-						            <div class="form-group col-md-12 col-sm-12">
-						                <label for="txtA_Title" class="col-sm-2 control-label">
-						                    Email
-						                    <span class="d_asterisk">*</span>                                
-						                </label>
-						                <div class="col-sm-10">
-						                    <input type="text" class="form-control" title="" id="txtA_Email" name="txtA_Title" placeholder="Email">
-						                </div>
-						            </div>
-						            <div class="form-group col-md-12 col-sm-12">
-						                <label for="txtA_Title" class="col-sm-2 control-label">
-						                    Nội dung
-						                    <span class="d_asterisk">*</span>                                
-						                </label>
-						                <div class="col-sm-10">
-						                    <textarea id="txtA_Content" class="comment-input animated" placeholder="Ý kiến của bạn?" style=""></textarea>
-						                </div>
-						            </div>
-						            <input type="hidden" class="form-control" id="txtA_postid" name="txtA_postId" value="<?php echo $_GET["id"]; ?>">
-						             <div class="form-group col-md-12 col-sm-12">
-							            <div class="col-sm-12 text-right">
-							            	<button type="button" class="btn btn-primary" onclick="save();">Gửi bình luận</button>
-							            </div>
-						        	</div>
-								</form>
+	<?php if($post['comments']!=""){
+
+		?>
+	<h4>Bình luận</h4>
+	<div class="media">
+		<div class="media-body">
+			<?php foreach($post['comments'] as $comment){ 
+					if($comment['duyet']==1){
+				?>
+			<div class="media-content">
+				<h6> <span><i class="glyphicon glyphicon-user"></i><strong><?php echo $comment['comment_name'];?> </strong></span>
+				<span><i class="glyphicon glyphicon-calendar"></i><?php echo date('d/m/Y', $comment['comment_date']->sec); ?></span></h6>
+				<p>
+					<?php echo $comment['comment_content'];?>
+				</p>
+			</div>
+			<?php } //end if?>
+			<?php } //end foreach ?>
+			
+		</div>
+	</div>
+	<?php } //end if post["comment"] ?>
+	<h4>Gửi ý kiến bình luận</h4>
+	<form class="form-horizontal" name="phpForm" action="" id="phpForm">
+		<div class="form-group col-md-12 col-sm-12">
+            <label for="txtA_Title" class="col-sm-12">
+                Tên
+                <span class="d_asterisk">*</span>                                
+            </label>
+            <div class="col-sm-12">
+                <input type="text" class="form-control" title="" id="txtA_Title" name="txtA_Title" placeholder="Tên">
+            </div>
+        </div>
+        <div class="form-group col-md-12 col-sm-12">
+            <label for="txtA_Title" class="col-sm-12">
+                Email
+                <span class="d_asterisk">*</span>                                
+            </label>
+            <div class="col-sm-12">
+                <input type="text" class="form-control" title="" id="txtA_Email" name="txtA_Title" placeholder="Email">
+            </div>
+        </div>
+        <div class="form-group col-md-12 col-sm-12">
+            <label for="txtA_Title" class="col-sm-12">
+                Nội dung
+                <span class="d_asterisk">*</span>                                
+            </label>
+            <div class="col-sm-12">
+                <textarea id="txtA_Content" class="comment-input animated" placeholder="Ý kiến của bạn?" style="width:100%;" rows="5"></textarea>
+            </div>
+        </div>
+        <input type="hidden" class="form-control" id="txtA_postid" name="txtA_postId" value="<?php echo $_GET["id"]; ?>">
+         <div class="form-group col-md-12 col-sm-12">
+            <div class="col-sm-12 text-left">
+            	<button type="button" class="btn btn-primary" onclick="save();">Gửi bình luận</button>
+            </div>
+    	</div>
+	</form>
 </div>
 <div class="col-md-12  padding15">							
 	<div id="message">
