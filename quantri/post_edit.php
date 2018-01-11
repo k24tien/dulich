@@ -246,6 +246,9 @@ if(isset($_GET['tt'])){
                 </label>
                 <div class="col-sm-10">
                     <textarea class="form-control summernote" id="txtA_Content" name="txtA_Content"><?php echo $post['content']?></textarea> 
+                    <script>
+                                    var content = $('.summernote').summernote('code');
+                    </script>
                 </div>
             </div>
         

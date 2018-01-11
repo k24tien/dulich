@@ -150,7 +150,8 @@ if($post!=null && $post['urlmap']!=""){
 							<p style="width: 100% ! important;">
 
 
-								<p style="width: 100% ! important;"><?php echo $post['content']?></p>
+								<p style="width: 100% ! important;"><?php echo $post['content']; ?></p>
+								<p><?php echo $post['urlmap']; ?></p>
 							</div>
 							<div class="col-md-12  padding15">
 								<button class="my_btn" type="button" id="btnAccount" onclick="shoFormLogin()" style="background-color: #1b95e0;font-size: 15px; padding: 0px 10px; margin-bottom: 5px;">
