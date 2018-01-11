@@ -1,4 +1,4 @@
-<?php include("header.php");?>
+<?php  include("header.php");?>
 <?php
 	$collections = $db->post;
 	$posts = $collections->find();
