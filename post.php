@@ -26,7 +26,25 @@ if($post!=null && $post['urlmap']!=""){
 	$ln = substr($url1, 0,strpos($url1, ',' )-1);
 }
 ?>
-
+<script>
+	function like(id){
+		var data = {
+    		hdID: id,
+        };
+        $.ajax({
+            url:'post_like.php',
+            type:'POST',
+            data:data,
+            success:function(data){
+                console.log(data);
+                $('#likenum').html(data);
+            },
+            error: function (data) {
+                console.log(data);
+            }
+        });
+	}
+</script>
 <?php include 'header.php'; ?>
 <?php include 'featured.php'; ?>
 	
@@ -62,6 +80,7 @@ if($post!=null && $post['urlmap']!=""){
 
 
 									</a></li>
+									<li><i class="glyphicon glyphicon-thumbs-up"></i><?php echo $post['like'];?></li>
 									<!--<li><i class="fa fa-tags"></i><a href="#">Design</a>, <a href="#">Blog</a></li> -->
 								</ul>
 							</div>
@@ -82,12 +101,12 @@ if($post!=null && $post['urlmap']!=""){
 								<p style="width: 100% ! important;"><?php echo $post['content']; ?></p>
 							</div>
 							
-							<!--<div class="col-md-12  padding15">
-								<button class="my_btn" type="button" id="btnAccount" onclick="shoFormLogin()" style="background-color: #1b95e0;font-size: 15px; padding: 0px 10px; margin-bottom: 5px;">
+							<div class="col-md-12  padding15">
+								<button class="my_btn like-button" type="button" id="btnAccount" onclick="like(<?php echo "'". $post['_id']."'";?>)" style="background-color: #1b95e0;font-size: 15px; padding: 0px 10px; margin: 10px 0px; ">
                                         <i class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></i>
-                                        <span style="font-size: 12px;">Thích <?php //if($post['like']>0) echo $post['like'];?></span>
+                                        <span style="font-size: 12px;">Thích </span><span id="likenum"> <?php if($post['like']>0) echo $post['like'];?></span>
                                     </button>
-							</div>-->
+							</div>
 							<div class="bottom-article">
 									<span><i class="glyphicon glyphicon-tags"></i> Từ khóa: 
 										<?php

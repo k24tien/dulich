@@ -1,14 +1,14 @@
 <?php
-if (isset($_POST['txtSearch'])) {
-	$txt_search =  $_POST['txtSearch'];
+if (isset($_GET['tag'])) {
+	$txt_tag =  $_GET['tag'];
 }
 ?>
 <?php include('config/config.php');?>
 <?php include 'header.php'; ?>
 <?php include 'featured.php'; ?>
-    <div class="row no-margin">
+<div class="row no-margin">
     	<div class="container">
-    		<h2 class="tagline">Kết quả tìm kiếm</h2>
+    		<h2 class="tagline"> bài viết có từ khóa <?php echo '"'. $txt_tag.'"'; ?></h2>
     	</div>
     </div>
 	<section class="row no-margin content">
@@ -17,8 +17,9 @@ if (isset($_POST['txtSearch'])) {
 			<div class="panel-body">
 				<?php 
             	$collections = $db->post;
-				$where_search = new MongoRegex('/'.$txt_search.'/i');
-                $posts = $collections->find(array('title'=>$where_search));
+				// $where_search = new MongoRegex('/'.$txt_search.'/i');
+            	$where_search = array("tags"=>$txt_tag);
+                $posts = $collections->find($where_search);
 				foreach ($posts as $post) {
 				?>
 				<div class="col-md-3 post">

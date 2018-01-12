@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -42,7 +43,11 @@
 						<li><a href="category.php?c=<?php echo $cat['catname'];?>"> <?php echo $cat['catname'];?></a> </li>
 						<?php }?>
 					    <li>
+					    	<?php if(isset($_SESSION["username"])){?>
+					    	<a href="quantri/"><?php echo $_SESSION["username"];?></a>
+					    	<?php }else{?>
 					        <a href="quantri/">Đăng nhập</a>
+					        <?php } ?>
 					    </li>
 	                </ul>
 				</div>
@@ -53,7 +58,8 @@
 				<div class="form-group search-form margin-right-10 pull-right">
 					<input class="form-control txt-search" type="search" name="txtSearch" id="txtSearch">
 					<button type="submit" class="btn btn-danger">Tìm kiếm</button>
-					<!-- <input class="btn-search" type="submit" alt="Search" value="Search" /> -->
+					<a  class="btn btn-danger" href="#adSearchModal" role="button" data-toggle="modal"><i class="glyphicon glyphicon-chevron-down"></i></a>
+					<!-- <input class="btn-search" type="button" alt="adSearch"/> -->
 				</div>
 			</form>
 		</div>
