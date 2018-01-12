@@ -176,7 +176,7 @@ if($post!=null && $post['urlmap']!=""){
 									<?php 
 									$collections1 = $db->post;
 
-									$query1 = $collections1->find(array('_id'=>array('$ne'=>new MongoId($post['_id'])), 'category'=>$post['category']))->limit(5);
+									$query1 = $collections1->find(array('_id'=>array('$ne'=>new MongoId($post['_id'])), 'category'=>$post['category']))->sort(array('created_date'=>-1))->limit(5);
 									foreach ($query1 as $q) { ?>
 									<li>
 										<img class="pull-left" alt="" style="width: 65px !important; height: 65px !important;" src="data:png;base64,<?php echo base64_encode($q['post_image']->bin);?> " width="65px" height="65px">
@@ -196,7 +196,7 @@ if($post!=null && $post['urlmap']!=""){
 									<?php 
 									$collections2 = $db->post;
 
-									$query2 = $collections2->find()->limit(5);
+									$query2 = $collections2->find()->sort(array('created_date'=>-1))->limit(5);
 									foreach ($query2 as $q) { ?>
 									<li>
 										<img class="pull-left" alt="" style="width: 65px !important; height: 65px !important;" src="data:png;base64,<?php echo base64_encode($q['post_image']->bin);?> " width="65px" height="65px">

@@ -12,7 +12,7 @@
 			<div class="panel-body">
 				<?php 
             	$collections = $db->post;
-				$posts = $collections->find();
+				$posts = $collections->find()->sort(array('created_date'=>-1))->limit(12);
 				foreach ($posts as $post) {
 				?>
 				<div class="col-md-3 post">

@@ -3,7 +3,7 @@ session_start();
 include("../config/config.php");
 if(isset($_POST['hdUserName'])&&isset($_POST['hdPass'])){
 	$user = $_POST['hdUserName'];
-	$pass = $_POST['hdPass'];
+	$pass = md5($_POST['hdPass']);
 	$storedUser = "";
 	$storedPass = "";
 	$rs = "Tài khoản không đúng!";

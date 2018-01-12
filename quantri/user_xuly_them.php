@@ -2,7 +2,7 @@
 include("../config/config.php");
 if(isset($_POST['username']) && isset($_POST['pwd']) && isset($_POST['name'])){
 	$username = $_POST['username'];
-	$pwd = $_POST['pwd'];
+	$pwd = md5($_POST['pwd']);
 	$name = $_POST['name'];
 	$rs = "User đã tồn tại!";
 	
