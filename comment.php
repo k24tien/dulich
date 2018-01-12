@@ -2,7 +2,7 @@
 	<?php if($post['comments']!=""){
 
 		?>
-	<h4>Bình luận</h4>
+	<h4><strong>Bình luận</strong></h4>
 	<div class="media">
 		<div class="media-body">
 			<?php foreach($post['comments'] as $comment){ 
@@ -21,7 +21,7 @@
 		</div>
 	</div>
 	<?php } //end if post["comment"] ?>
-	<h4>Gửi ý kiến bình luận</h4>
+	<h4><strong>Gửi ý kiến bình luận</strong></h4>
 	<form class="form-horizontal" name="phpForm" action="" id="phpForm">
 		<div class="form-group col-md-12 col-sm-12">
             <label for="txtA_Title">
