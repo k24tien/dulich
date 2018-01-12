@@ -95,13 +95,15 @@ var n_cb = 0;
 		var pwd = $('#txtPwd1');
 		var fullname = $('#txtfullname1');
 		var id = $('#txtID');
+		var pwdNew = $('#txtPwdNew');
 		var hasError = validateEmptyValue(new Array(username));
 		if(!hasError){
 			var data = {
 				id: id.val(),
 	            username: username.val(),
 	            pwd: pwd.val(),
-	            fullname:fullname.val()
+	            fullname:fullname.val(),
+	            pwdNew:pwdNew.val()
 	        };
 
 	        $.ajax({
@@ -229,7 +231,6 @@ var n_cb = 0;
 		                    <a href="#" id="C_Title" onclick="">Họ tên</a>
 		                </th>
 		                <th width="15%">UserName</th>
-		                <th width="12%">Password</th>  
 		                <th align="center" width="3%">Sửa</th>
 		                <th align="center" width="3%">Xoá</th>
 					</tr>
@@ -247,7 +248,7 @@ var n_cb = 0;
 		                	<a href="#" onclick="openEditForm('<?php echo $user['username']?>');"><?php echo $user['name']?></a>
 		                </td>
 		                <td><?php echo $user['username']?></td>
-		                <td><?php echo $user['pwd']?></td>
+		                
 		                <td align="center"> 
 		                	<a href="#" class="" onclick="openEditForm('<?php echo $user['_id']?>');">
 		                        <i class="glyphicon glyphicon-edit"></i>
