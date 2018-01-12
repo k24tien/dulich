@@ -230,9 +230,20 @@ ul.meta-post li a {
 	border-bottom: 1px solid #d0d0d0;
 
 }
-/*
+/*Comment */
+.comment-author, .comment-date {
+	padding-right: 10px;
+	font-size: 14px;
+	font-style: italic;
+}
+.comment-author i, .comment-date i{
+	padding-right: 10px;
+}
+.media-content{
+	padding: 10px 0px;
+	border-bottom: 1px solid #ddd;
+}
 
-*/
 .d_asterisk{
 	color: red;
 }

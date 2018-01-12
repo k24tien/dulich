@@ -2,15 +2,15 @@
 	<?php if($post['comments']!=""){
 
 		?>
-	<h4>Bình luận</h4>
+	<h4><strong>Bình luận</strong></h4>
 	<div class="media">
 		<div class="media-body">
 			<?php foreach($post['comments'] as $comment){ 
 					if($comment['duyet']==1){
 				?>
 			<div class="media-content">
-				<h6> <span><i class="glyphicon glyphicon-user"></i><strong><?php echo $comment['comment_name'];?> </strong></span>
-				<span><i class="glyphicon glyphicon-calendar"></i><?php echo date('d/m/Y', $comment['comment_date']->sec); ?></span></h6>
+				<h6> <span class="comment-author"><i class="glyphicon glyphicon-user"></i><strong><?php echo $comment['comment_name'];?> </strong></span>
+				<span class="comment-date"><i class="glyphicon glyphicon-calendar"></i><?php echo date('d/m/Y', $comment['comment_date']->sec); ?></span></h6>
 				<p>
 					<?php echo $comment['comment_content'];?>
 				</p>
@@ -21,7 +21,7 @@
 		</div>
 	</div>
 	<?php } //end if post["comment"] ?>
-	<h4>Gửi ý kiến bình luận</h4>
+	<h4><strong>Gửi ý kiến bình luận</strong></h4>
 	<form class="form-horizontal" name="phpForm" action="" id="phpForm">
 		<div class="form-group col-md-12 col-sm-12">
             <label for="txtA_Title">
@@ -90,6 +90,9 @@
 								                    
 								                    if ($.trim(data) == 'OK') {
 								                    	$('#message').empty();
+								                    	$('#txtA_Title').val("");
+								                    	$('#txtA_Email').val("");
+								                    	$('#txtA_Content').val("");
 
 								                        $('#message').append("<div class='alert alert-success' >Gửi bình luận thành công! <strong>Xin lưu ý: </strong>Chúng tôi sẽ xét duyệt bình luận trước khi đăng!</div>");
 								                        
