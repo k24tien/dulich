@@ -94,6 +94,12 @@ if(!isset($_SESSION["username"])){
                             <span class="text_menu">Quản lý user</span>
                         </a>
                     </li>
+                    <li class="menu-top">
+                        <a href="place.php">
+                            <span class="icon"><i class="glyphicon glyphicon-pushpin"></i></span>
+                            <span class="text_menu">Quản lý địa điểm</span>
+                        </a>
+                    </li>
 				</ul>
 			</div>
 		</div>

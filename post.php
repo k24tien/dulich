@@ -100,13 +100,16 @@ if($post!=null && $post['urlmap']!=""){
 							<div class="post-content">
 								<p style="width: 100% ! important;"><?php echo $post['content']; ?></p>
 							</div>
+
 							
+							<button class="my_btn like-button" type="button" id="btnAccount" onclick="like(<?php echo "'". $post['_id']."'";?>)" style="background-color: #1b95e0;font-size: 15px; padding: 0px 10px; margin: 10px 0px; ">
+                                    <i class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></i>
+                                    <span style="font-size: 12px;">Thích </span><span id="likenum"> <?php if($post['like']>0) echo $post['like'];?></span>
+                                </button>
+
 							<div class="col-md-12  padding15">
-								<button class="my_btn like-button" type="button" id="btnAccount" onclick="like(<?php echo "'". $post['_id']."'";?>)" style="background-color: #1b95e0;font-size: 15px; padding: 0px 10px; margin: 10px 0px; ">
-                                        <i class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></i>
-                                        <span style="font-size: 12px;">Thích </span><span id="likenum"> <?php if($post['like']>0) echo $post['like'];?></span>
-                                    </button>
-							</div>
+								
+							
 							<div class="bottom-article">
 									<span><i class="glyphicon glyphicon-tags"></i> Từ khóa: 
 										<?php
@@ -122,6 +125,7 @@ if($post!=null && $post['urlmap']!=""){
 
 										?>
 									</span>
+							</div>
 							</div>
 						</div>	
 

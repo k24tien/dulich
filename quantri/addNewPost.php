@@ -30,74 +30,7 @@
             });
         });
     });
-    /*function addPost(redirectPage){
-        var img;
-        var txtA_Title = $('#txtA_Title');
-        var txtA_Alias = $('#txtA_Alias');
-        var file = $('#file');
-        var slA_Category = $('#slA_Category');
-        var txtA_Urlmap = $("#txtA_Urlmap");
-        var txtA_Address = $('#txtA_Address');
-        var slA_Tinh = $('#slA_Tinh');
-        var slA_Huyen = $('#slA_Huyen');
-        var txtA_Des = $('#txtA_Des');
-        var txtA_Content = CKEDITOR.instances['txtA_Content'].getData();
-        var file_data = $('#file').prop("files")[0];
-        var reader = new FileReader();
-        reader.readAsText(file_data);
-        // reader.onload=function(){reader.result}
-        alert(file_data);
-        var hasError = validateEmptyValue(new Array(txtA_Title, txtA_Alias, slA_Category));
-        if(!hasError){
-           // var dataForm = new FormData();
-            //dataForm.append('file', file_data);
-
-            // dataForm.append('hdTitle', txtA_Title.val());
-            // dataForm.append('hdAlias', txtA_Alias.val());
-            // dataForm.append('hdCategory', slA_Category.val());
-            // dataForm.append('hdUrlmap', txtA_Urlmap.val());
-            // dataForm.append('hdAddress', txtA_Address.val());
-            // dataForm.append('hdTinh', slA_Tinh.val());
-            // dataForm.append('hdHuyen', slA_Huyen.val());
-            // dataForm.append('hdDes', txtA_Des.val());
-            // dataForm.append('hdContent', txtA_Content);
-            var data = {
-                hdTitle: txtA_Title.val(),
-                hdAlias: txtA_Alias.val(),
-                hdFile: file.val(),
-                hdCategory:  slA_Category.val(),
-                hdUrlmap: txtA_Urlmap.val(),
-                hdAddress:txtA_Address.val(),
-                hdTinh: slA_Tinh.val(),
-                hdHuyen: slA_Huyen.val(),
-                hdDes: txtA_Des.val(),
-                hdContent: txtA_Content
-            };
-            $.ajax({
-                url:'addnewpost_xuly_them.php',
-                type:'POST',
-                data:data,
-                success:function(data){
-                    console.log(data);
-                    if ($.trim(data) == 'OK') {
-                        swal({
-                            title: "Thao tác thành công!",
-                        });
-                        // if(redirectPage){
-                        //     window.location.reload();
-                        // }else{
-                        //     window.location.reload();
-                        // }
-                    } else {
-                        swal("Lỗi", data, "error");
-                    }
-                },
-                error: function (data) {
-                    console.log(data);
-                }
-            });
-        }
-    }*/
+    
     function checkError(){
         var txtA_Title = $('#txtA_Title');
         var txtA_Alias = $('#txtA_Alias');
