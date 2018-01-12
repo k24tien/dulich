@@ -19,8 +19,10 @@
 			<div class="panel-body">
 				<?php 
             	$collections = $db->post;
-				$title_search = new MongoRegex('/'.$txt_search.'/i');
-                $posts = $collections->find(array('title'=>$where_search));
+				$title_search = new MongoRegex('/'.$title.'/i');
+				$category_search = new MongoRegex('/'.$category.'/i');
+				$tinh_search = new MongoRegex('/'.$tinh.'/i');
+                $posts = $collections->find(array('title'=>$title_search, 'category'=>$category_search,'tinh'=>$tinh_search));
 				foreach ($posts as $post) {
 				?>
 				<div class="col-md-3 post">
@@ -39,11 +41,6 @@
 			
 		</div>
 	</section>
-	<footer class="row no-margin footer">
-		<div class="container margin_top45">
-			<h4 class="copyright">@Copyright dulichmekong</h4>
-		</div>
-	</footer>
-</div>
+	<?php include('footer.php');?>
 </body>
 </html>
