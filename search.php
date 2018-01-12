@@ -1,19 +1,12 @@
-<<<<<<< HEAD
-<?php
-=======
+
 <?php include('config/config.php');
->>>>>>> 352846f2ccd1eea517f4dbe65ea4b06b38e64efd
 if (isset($_POST['txtSearch'])) {
 	$txt_search =  $_POST['txtSearch'];
 }
 ?>
-<?php include('config/config.php');?>
 <?php include 'header.php'; ?>
 <?php include 'featured.php'; ?>
-<<<<<<< HEAD
-=======
-   
->>>>>>> 352846f2ccd1eea517f4dbe65ea4b06b38e64efd
+
     <div class="row no-margin">
     	<div class="container">
     		<h2 class="tagline">Kết quả tìm kiếm</h2>
