@@ -38,6 +38,9 @@ if($post!=null && $post['urlmap']!=""){
             success:function(data){
                 console.log(data);
                 $('#likenum').html(data);
+                $('#btnAccount').prop('disabled', true);
+                $('#btnAccount').css('background-color','#ddd');
+
             },
             error: function (data) {
                 console.log(data);
@@ -80,7 +83,7 @@ if($post!=null && $post['urlmap']!=""){
 
 
 									</a></li>
-									<li><i class="glyphicon glyphicon-thumbs-up"></i><?php echo $post['like'];?></li>
+									<li><i class="glyphicon glyphicon-thumbs-up"></i><a href="#"><?php echo $post['like'];?> lượt thích</a></li>
 									<!--<li><i class="fa fa-tags"></i><a href="#">Design</a>, <a href="#">Blog</a></li> -->
 								</ul>
 							</div>

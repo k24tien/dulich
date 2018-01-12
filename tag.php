@@ -8,7 +8,7 @@ if (isset($_GET['tag'])) {
 <?php include 'featured.php'; ?>
 <div class="row no-margin">
     	<div class="container">
-    		<h2 class="tagline"> bài viết có từ khóa <?php echo '"'. $txt_tag.'"'; ?></h2>
+    		<h2 class="tagline"> Những bài viết có chứa từ khóa <strong><?php echo '"'. $txt_tag.'"'; ?></strong></h2>
     	</div>
     </div>
 	<section class="row no-margin content">

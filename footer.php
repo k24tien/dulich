@@ -1,6 +1,12 @@
 <footer class="row no-margin footer">
-		<div class="container margin_top45">
-			<h4 class="copyright">@Copyright dulichmekong</h4>
+		<div class="panel-body margin_top15">
+			<div class="col-lg-6 pull-left">
+				<h4 class="copyright">Bài tập nhóm Phát triển phần mềm nguồn mở</h4>
+			</div>
+			<div class="col-lg-6 pull-right">
+				<h4 class="copyright" style="text-align: right;">Giảng viên hướng dẫn: Đỗ Thanh Nghị</h4>
+			</div>
+			
 		</div>
 	</footer>
 </div>
