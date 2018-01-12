@@ -23,9 +23,9 @@ if (isset($_POST['id'])) {
 						.'</div></div>'                     
 				
 						.'<div class="form-group">'	
-						.'<label for="txtPwd" class="col-sm-3 control-label">Mật khẩu củ</label>'		
+						.'<label for="txtPwd" class="col-sm-3 control-label">Mật khẩu cũ</label>'		
 						.'<div class="col-sm-9">'
-						.'<input type="password" class="form-control" title="" id="txtPwd1" name="txtPwd1" placeholder="Mật khẩu củ" value="'.$users["pwd"].'">'
+						.'<input type="password" class="form-control" title="" id="txtPwd1" name="txtPwd1" placeholder="Mật khẩu cũ" value="'.$users["pwd"].'">'
 
 						.'</div></div>'
 
